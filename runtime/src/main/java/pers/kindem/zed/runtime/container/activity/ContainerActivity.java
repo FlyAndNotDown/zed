@@ -1,14 +1,11 @@
 package pers.kindem.zed.runtime.container.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 
 import pers.kindem.zed.runtime.bean.PluginInfo;
 import pers.kindem.zed.runtime.bean.PluginLoadInfo;
 import pers.kindem.zed.runtime.core.Installer;
-import pers.kindem.zed.runtime.loader.PluginClassLoader;
-import pers.kindem.zed.runtime.loader.PluginLoader;
 import pers.kindem.zed.runtime.utils.Constant;
 
 public class ContainerActivity extends Activity implements ContainerActivityCallback {
@@ -40,17 +37,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
             return false;
         }
 
-        PluginClassLoader pluginClassLoader = PluginClassLoader.newInstance(
-            pluginInfo.getApkPath(),
-            pluginInfo.getOptDir(),
-            pluginInfo.getLibDir(),
-            PluginLoader.class.getClassLoader()
-        );
-        PluginActivity pluginActivity = (PluginActivity) PluginLoader.loadComponent(
-            pluginClassLoader, pluginLoadInfo.getComponent(), this
-        );
-
-
+        // TODO
         return true;
     }
 

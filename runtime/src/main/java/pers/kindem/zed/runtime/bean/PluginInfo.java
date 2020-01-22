@@ -8,6 +8,7 @@ public class PluginInfo {
     private String apkPath;
     private String optDir;
     private String libDir;
+    private String applicationName;
     private int version;
 
     public PluginInfo() {
@@ -16,6 +17,7 @@ public class PluginInfo {
         this.apkPath = "";
         this.optDir = "";
         this.libDir = "";
+        this.applicationName = "";
         this.version = 0;
     }
 
@@ -25,6 +27,7 @@ public class PluginInfo {
         String apkPath,
         String optDir,
         String libDir,
+        String applicationName,
         int version
     ) {
         this.name = name;
@@ -32,6 +35,7 @@ public class PluginInfo {
         this.apkPath = apkPath;
         this.optDir = optDir;
         this.libDir = libDir;
+        this.applicationName = applicationName;
         this.version = version;
     }
 
@@ -41,6 +45,7 @@ public class PluginInfo {
             StringUtil.verify(this.apkPath) &&
             StringUtil.verify(this.optDir) &&
             StringUtil.verify(this.libDir) &&
+            applicationName != null &&
             this.version != 0;
     }
 
@@ -90,5 +95,13 @@ public class PluginInfo {
 
     public void setLibDir(String libDir) {
         this.libDir = libDir;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public void setApplicationName(String applicationName) {
+        this.applicationName = applicationName;
     }
 }

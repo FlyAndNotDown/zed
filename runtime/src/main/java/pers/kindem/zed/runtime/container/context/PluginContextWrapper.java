@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 
-import pers.kindem.zed.runtime.loader.PluginClassLoader;
-import pers.kindem.zed.runtime.loader.PluginResources;
+import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
+import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
+import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 
 public class PluginContextWrapper extends ContextWrapper implements PluginContextInject {
     private PluginClassLoader pluginClassLoader;

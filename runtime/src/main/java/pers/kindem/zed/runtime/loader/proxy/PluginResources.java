@@ -1,4 +1,4 @@
-package pers.kindem.zed.runtime.loader;
+package pers.kindem.zed.runtime.loader.proxy;
 
 import android.content.res.Resources;
 

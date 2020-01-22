@@ -1,17 +1,16 @@
 package pers.kindem.zed.runtime.loader;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import pers.kindem.zed.runtime.container.context.PluginContextWrapper;
+import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
 import pers.kindem.zed.runtime.utils.LogUtil;
 
 public class PluginLoader {
     private static final String TAG = PluginLoader.class.getSimpleName();
-
+    
     public static Context loadComponent(PluginClassLoader pluginClassLoader, String component, Context hostContext) {
         Class<?> pluginComponentClass = null;
         try {
@@ -44,14 +43,5 @@ public class PluginLoader {
         }
 
         return pluginComponent;
-    }
-
-    public static void inject(
-        PluginContextWrapper pluginComponent,
-        ClassLoader pluginClassLoader,
-        Resources pluginResources,
-        Context pluginApplication
-    ) {
-
     }
 }

@@ -1,7 +1,8 @@
 package pers.kindem.zed.runtime.container.context;
 
-import pers.kindem.zed.runtime.loader.PluginClassLoader;
-import pers.kindem.zed.runtime.loader.PluginResources;
+import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
+import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
+import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 
 public interface PluginContextInject {
     void setPluginClassLoader(PluginClassLoader pluginClassLoader);

@@ -18,6 +18,7 @@ public class Installer {
                 "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/base.apk",
                 "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/oat",
                 "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/lib",
+                "",
                 1
             );
         }
