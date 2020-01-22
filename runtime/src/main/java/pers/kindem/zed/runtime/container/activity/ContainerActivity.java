@@ -1,15 +1,20 @@
 package pers.kindem.zed.runtime.container.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import pers.kindem.zed.runtime.bean.PluginInfo;
 import pers.kindem.zed.runtime.bean.PluginLoadInfo;
+import pers.kindem.zed.runtime.core.Installer;
+import pers.kindem.zed.runtime.loader.PluginClassLoader;
+import pers.kindem.zed.runtime.loader.PluginLoader;
 import pers.kindem.zed.runtime.utils.Constant;
 
-public class ContainerContainerActivity extends Activity implements ContainerActivityCallback {
+public class ContainerActivity extends Activity implements ContainerActivityCallback {
     private PluginActivity pluginActivity;
 
-    public ContainerContainerActivity() {}
+    public ContainerActivity() {}
 
     public PluginLoadInfo resolvePluginInfo(Bundle bundle) {
         if (bundle == null) {
@@ -27,8 +32,26 @@ public class ContainerContainerActivity extends Activity implements ContainerAct
         if (pluginLoadInfo == null) {
             return false;
         }
-        // TODO
-        return false;
+        PluginInfo pluginInfo = Installer.getPluginInfo(pluginLoadInfo.getName());
+        if (pluginInfo == null) {
+            return false;
+        }
+        if (!pluginInfo.selfVerify()) {
+            return false;
+        }
+
+        PluginClassLoader pluginClassLoader = PluginClassLoader.newInstance(
+            pluginInfo.getApkPath(),
+            pluginInfo.getOptDir(),
+            pluginInfo.getLibDir(),
+            PluginLoader.class.getClassLoader()
+        );
+        PluginActivity pluginActivity = (PluginActivity) PluginLoader.loadComponent(
+            pluginClassLoader, pluginLoadInfo.getComponent(), this
+        );
+
+
+        return true;
     }
 
     @Override
@@ -37,7 +60,6 @@ public class ContainerContainerActivity extends Activity implements ContainerAct
             getIntent().getBundleExtra(Constant.KEY_PLUGIN_LOAD_INFO) :
             savedInstanceState.getBundle(Constant.KEY_PLUGIN_LOAD_INFO));
         if (!loadPlugin(pluginLoadInfo)) {
-            // TODO exception
             finish();
             return;
         }
