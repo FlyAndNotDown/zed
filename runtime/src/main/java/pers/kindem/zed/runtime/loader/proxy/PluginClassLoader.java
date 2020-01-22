@@ -1,8 +1,5 @@
 package pers.kindem.zed.runtime.loader.proxy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import dalvik.system.DexClassLoader;
 
 public class PluginClassLoader extends DexClassLoader {

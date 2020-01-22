@@ -77,8 +77,13 @@ public class PluginLoader {
             if (pluginApplicationMap.containsKey(pluginName)) {
                 return pluginApplicationMap.get(pluginName);
             } else {
-                PluginApplication pluginApplication = (PluginApplication) loadPluginComponent(
-                    pluginClassLoader, applicationName, hostContext);
+                PluginApplication pluginApplication;
+                if (applicationName.isEmpty()) {
+                    pluginApplication = new PluginApplication(hostContext);
+                } else {
+                    pluginApplication = (PluginApplication) loadPluginComponent(
+                        pluginClassLoader, applicationName, hostContext);
+                }
                 pluginApplicationMap.put(pluginName, pluginApplication);
                 return pluginApplication;
             }
