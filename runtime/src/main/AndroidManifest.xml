@@ -1,2 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pers.kindem.zed.runtime" />
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pers.kindem.zed.runtime">
+
+    <application>
+        <activity
+            android:launchMode="standard"
+            android:name=".host.HostStandardActivity"/>
+    </application>
+
+</manifest>
