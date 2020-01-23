@@ -14,10 +14,10 @@ public class Installer {
         if (name.equals("plugin-1")) {
             return new PluginInfo(
                 "plugin-1",
-                "pers.kindem.zed.plugin_1",
-                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/base.apk",
-                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/oat",
-                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_1__1/lib",
+                "pers.kindem.zed.plugin-app",
+                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_app__1/base.apk",
+                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_app__1/oat",
+                "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_app__1/lib",
                 "",
                 1
             );
