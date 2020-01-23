@@ -11,9 +11,9 @@ public class Installer {
 
     public static PluginInfo getPluginInfo(String name) {
         // TODO query plugin info in PPMS
-        if (name.equals("plugin-1")) {
+        if (name.equals("plugin-app")) {
             return new PluginInfo(
-                "plugin-1",
+                "plugin-app",
                 "pers.kindem.zed.plugin-app",
                 "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_app__1/base.apk",
                 "/data/data/pers.kindem.zed.plugin_1/files/plugins/plugin_app__1/oat",
