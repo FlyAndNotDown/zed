@@ -15,7 +15,7 @@ public class MainApplication extends Application {
             Log.e(TAG, "failed to init zed installer");
             return;
         }
-        if (!Installer.copyPluginApkFromAssets(getApplicationContext(), "pers.kindem.plugin_app__1.apk")) {
+        if (!Installer.copyPluginApkFromAssets(getApplicationContext(), "plugin_app__1.apk")) {
             Log.e(TAG, "failed to copy apk from assets");
             return;
         }

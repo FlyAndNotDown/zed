@@ -56,11 +56,8 @@ public class Installer {
         if (inputStream == null) {
             return false;
         }
-        String[] splitTemp = apkName.split("__");
-        String packageName = splitTemp[0];
-        String version = splitTemp[1];
         File installDir = new File(
-            getPluginsDirPath(context) + File.separator + packageName + "__" + version
+            getPluginsDirPath(context) + File.separator + apkName.substring(0, apkName.lastIndexOf('.'))
         );
         if (!installDir.exists()) {
             if (!installDir.mkdirs()) {
