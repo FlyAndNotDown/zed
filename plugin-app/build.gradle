@@ -26,3 +26,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly project(':runtime')
 }
+
+task copyApk() {
+    copy {
+        from file('build/outputs/apk/debug/plugin-app-debug.apk')
+        into "${rootDir}/host-app/src/main/assets"
+        rename { 'plugin_app__1.apk' }
+    }
+}
