@@ -46,7 +46,7 @@ public class Installer {
         return null;
     }
 
-    public static boolean copyPluginApkFromassets(Context context, String apkName) {
+    public static boolean copyPluginApkFromAssets(Context context, String apkName) {
         InputStream inputStream = null;
         try {
             inputStream = context.getResources().getAssets().open(apkName);
