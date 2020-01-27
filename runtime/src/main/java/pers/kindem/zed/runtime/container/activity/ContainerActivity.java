@@ -79,6 +79,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
             getIntent().getBundleExtra(Constant.KEY_PLUGIN_LOAD_INFO) :
             savedInstanceState.getBundle(Constant.KEY_PLUGIN_LOAD_INFO));
         if (!loadPlugin(pluginLoadInfo)) {
+            super.onCreate(null);
             finish();
             return;
         }
