@@ -12,8 +12,11 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         if (!Installer.init(getApplicationContext())) {
-            Log.i(TAG, "failed to init zed installer");
+            Log.e(TAG, "failed to init zed installer");
+            return;
         }
-        Installer.copyPluginApkFromAsserts(getApplicationContext(), "pers.kindem.plugin_app__1.apk");
+        if (!Installer.copyPluginApkFromassets(getApplicationContext(), "pers.kindem.plugin_app__1.apk")) {
+            Log.e(TAG, "failed to copy apk from assets");
+        }
     }
 }
