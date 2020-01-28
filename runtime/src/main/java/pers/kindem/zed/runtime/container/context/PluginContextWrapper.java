@@ -3,6 +3,7 @@ package pers.kindem.zed.runtime.container.context;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 
 import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
 import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
@@ -12,6 +13,7 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     private PluginClassLoader pluginClassLoader;
     private PluginResources pluginResources;
     private PluginApplication pluginApplication;
+    private LayoutInflater layoutInflater;
 
     public PluginContextWrapper(Context base) {
         super(base);
@@ -45,5 +47,16 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     @Override
     public Context getApplicationContext() {
         return pluginApplication;
+    }
+
+    @Override
+    public Object getSystemService(String name) {
+        if (name.equals(LAYOUT_INFLATER_SERVICE)) {
+            if (layoutInflater == null) {
+                layoutInflater = LayoutInflater.from(this);
+            }
+            return layoutInflater;
+        }
+        return null;
     }
 }

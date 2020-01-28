@@ -1,7 +1,9 @@
 package pers.kindem.zed.runtime.container.activity;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
 
 import pers.kindem.zed.runtime.bean.PluginInfo;
 import pers.kindem.zed.runtime.bean.PluginLoadInfo;
@@ -93,7 +95,30 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     }
 
     @Override
+    public Resources getResources() {
+        if (pluginActivity == null) {
+            return pureGetResources();
+        }
+        return pluginActivity.getResources();
+    }
+
+    @Override
     public void pureOnCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void pureSetContentView(View view) {
+        super.setContentView(view);
+    }
+
+    @Override
+    public void pureSetContentView(int id) {
+        super.setContentView(id);
+    }
+
+    @Override
+    public Resources pureGetResources() {
+        return super.getResources();
     }
 }

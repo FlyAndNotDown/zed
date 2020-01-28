@@ -1,8 +1,10 @@
 package pers.kindem.zed.runtime.loader.proxy;
 
 import android.annotation.TargetApi;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 
 public class PluginResources extends Resources {
@@ -51,6 +53,43 @@ public class PluginResources extends Resources {
             return injectResources.getText(id, def);
         } catch (NotFoundException e) {
             return hostResources.getText(id);
+        }
+    }
+
+    @Override
+    public int getColor(int id) throws NotFoundException {
+        try {
+            return injectResources.getColor(id);
+        } catch (NotFoundException e) {
+            return hostResources.getColor(id);
+        }
+    }
+
+    @Override
+    public Drawable getDrawable(int id) throws NotFoundException {
+        try {
+            return injectResources.getDrawable(id);
+        } catch (NotFoundException e) {
+            return hostResources.getDrawable(id);
+        }
+    }
+
+    @Override
+    public Drawable getDrawable(int id, Theme theme) throws NotFoundException {
+        try {
+            return injectResources.getDrawable(id, theme);
+        } catch (NotFoundException e) {
+            return hostResources.getDrawable(id, theme);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public ColorStateList getColorStateList(int id, Theme theme) throws NotFoundException {
+        try {
+            return injectResources.getColorStateList(id, theme);
+        } catch (NotFoundException e) {
+            return hostResources.getColorStateList(id, theme);
         }
     }
 }
