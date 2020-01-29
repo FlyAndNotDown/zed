@@ -97,7 +97,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     @Override
     public Resources getResources() {
         if (pluginActivity == null) {
-            return pureGetResources();
+            return Resources.getSystem();
         }
         return pluginActivity.getResources();
     }

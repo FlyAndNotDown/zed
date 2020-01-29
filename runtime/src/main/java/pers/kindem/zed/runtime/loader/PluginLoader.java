@@ -2,6 +2,7 @@ package pers.kindem.zed.runtime.loader;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 
@@ -98,20 +99,21 @@ public class PluginLoader {
                 return pluginResourcesMap.get(pluginName);
             } else {
                 PackageManager packageManager = hostContext.getPackageManager();
-                ApplicationInfo applicationInfo = null;
-                try {
-                    applicationInfo = packageManager.getApplicationInfo(hostContext.getPackageName(), 0);
-                } catch (PackageManager.NameNotFoundException e) {
-                    LogUtil.e(TAG, "failed to get application info of host context");
-                }
-                if (applicationInfo == null) {
+                PackageInfo packageArchiveInfo = packageManager.getPackageArchiveInfo(
+                    apkPath, PackageManager.GET_ACTIVITIES |
+                        PackageManager.GET_META_DATA |
+                        PackageManager.GET_SERVICES |
+                        PackageManager.GET_PROVIDERS |
+                        PackageManager.GET_SIGNATURES
+                );
+                if (packageArchiveInfo == null || packageArchiveInfo.applicationInfo == null) {
                     return null;
                 }
-                applicationInfo.sourceDir = apkPath;
-                applicationInfo.publicSourceDir = apkPath;
+                packageArchiveInfo.applicationInfo.sourceDir = apkPath;
+                packageArchiveInfo.applicationInfo.publicSourceDir = apkPath;
                 Resources injectResources = null;
                 try {
-                    injectResources = packageManager.getResourcesForApplication(applicationInfo);
+                    injectResources = packageManager.getResourcesForApplication(packageArchiveInfo.applicationInfo);
                 } catch (PackageManager.NameNotFoundException e) {
                     LogUtil.e(TAG, "failed to create inject resources");
                 }
