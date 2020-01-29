@@ -14,9 +14,11 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     private PluginResources pluginResources;
     private PluginApplication pluginApplication;
     private LayoutInflater layoutInflater;
+    private Context baseContext;
 
     public PluginContextWrapper(Context base) {
         super(base);
+        baseContext = base;
     }
 
     @Override

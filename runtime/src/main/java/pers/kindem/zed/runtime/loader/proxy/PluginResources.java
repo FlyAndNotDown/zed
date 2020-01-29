@@ -14,7 +14,7 @@ public class PluginResources extends Resources {
     private Resources injectResources;
 
     public PluginResources(Resources hostResources, Resources injectResources) {
-        super(hostResources.getAssets(), hostResources.getDisplayMetrics(), hostResources.getConfiguration());
+        super(injectResources.getAssets(), injectResources.getDisplayMetrics(), injectResources.getConfiguration());
         this.hostResources = hostResources;
         this.injectResources = injectResources;
     }
@@ -52,7 +52,7 @@ public class PluginResources extends Resources {
         try {
             return injectResources.getText(id, def);
         } catch (NotFoundException e) {
-            return hostResources.getText(id);
+            return hostResources.getText(id, def);
         }
     }
 
