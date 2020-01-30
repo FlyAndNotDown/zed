@@ -57,7 +57,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
             return false;
         }
         PluginResources pluginResources = PluginLoader.loadPluginResources(
-            pluginInfo.getName(), pluginInfo.getApkPath(), this
+            pluginInfo.getName(), pluginInfo.getApkPath(), getApplicationContext()
         );
         if (pluginResources == null) {
             return false;

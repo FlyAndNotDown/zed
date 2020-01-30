@@ -92,13 +92,13 @@ public class PluginLoader {
     }
 
     public static PluginResources loadPluginResources(
-        String pluginName, String apkPath, Context hostContext
+        String pluginName, String apkPath, Context hostApplicationContext
     ) {
         synchronized (PluginLoader.class) {
             if (pluginResourcesMap.containsKey(pluginName)) {
                 return pluginResourcesMap.get(pluginName);
             } else {
-                PackageManager packageManager = hostContext.getPackageManager();
+                PackageManager packageManager = hostApplicationContext.getPackageManager();
                 PackageInfo packageArchiveInfo = packageManager.getPackageArchiveInfo(
                     apkPath, PackageManager.GET_ACTIVITIES |
                         PackageManager.GET_META_DATA |
@@ -120,7 +120,7 @@ public class PluginLoader {
                 if (injectResources == null) {
                     return null;
                 }
-                PluginResources pluginResources = new PluginResources(hostContext.getResources(), injectResources);
+                PluginResources pluginResources = new PluginResources(hostApplicationContext.getResources(), injectResources);
                 pluginResourcesMap.put(pluginName, pluginResources);
                 return pluginResources;
             }
