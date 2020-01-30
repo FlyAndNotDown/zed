@@ -16,6 +16,7 @@ import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 import pers.kindem.zed.runtime.utils.Constant;
 
 public class ContainerActivity extends Activity implements ContainerActivityCallback {
+    private boolean beforeOnCreate = true;
     private PluginActivity pluginActivity;
 
     public ContainerActivity() {}
@@ -78,6 +79,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        beforeOnCreate = true;
         PluginLoadInfo pluginLoadInfo = resolvePluginInfo(savedInstanceState == null ?
             getIntent().getBundleExtra(Constant.KEY_PLUGIN_LOAD_INFO) :
             savedInstanceState.getBundle(Constant.KEY_PLUGIN_LOAD_INFO));
@@ -92,6 +94,18 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
         } else {
             super.onCreate(null);
             finish();
+        }
+    }
+
+    @Override
+    public Resources.Theme getTheme() {
+        return pureGetTheme();
+    }
+
+    @Override
+    public void setTheme(int resid) {
+        if (!beforeOnCreate) {
+            pureSetTheme(resid);
         }
     }
 
@@ -147,5 +161,15 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     @Override
     public LayoutInflater pureGetLayoutInflater() {
         return super.getLayoutInflater();
+    }
+
+    @Override
+    public Resources.Theme pureGetTheme() {
+        return super.getTheme();
+    }
+
+    @Override
+    public void pureSetTheme(int resid) {
+        super.setTheme(resid);
     }
 }

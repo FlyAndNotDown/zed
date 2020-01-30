@@ -12,4 +12,6 @@ public interface ContainerActivityCallback {
     LayoutInflater pureGetLayoutInflater();
     void pureSetContentView(View view);
     void pureSetContentView(int id);
+    Resources.Theme pureGetTheme();
+    void pureSetTheme(int resid);
 }
