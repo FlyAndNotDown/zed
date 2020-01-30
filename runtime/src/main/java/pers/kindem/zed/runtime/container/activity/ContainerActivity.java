@@ -3,6 +3,7 @@ package pers.kindem.zed.runtime.container.activity;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import pers.kindem.zed.runtime.bean.PluginInfo;
@@ -103,6 +104,22 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     }
 
     @Override
+    public ClassLoader getClassLoader() {
+        if (pluginActivity == null) {
+            return pureGetClassLoader();
+        }
+        return pluginActivity.getClassLoader();
+    }
+
+    @Override
+    public LayoutInflater getLayoutInflater() {
+        if (pluginActivity == null) {
+            return pureGetLayoutInflater();
+        }
+        return pluginActivity.getLayoutInflater();
+    }
+
+    @Override
     public void pureOnCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -120,5 +137,15 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     @Override
     public Resources pureGetResources() {
         return super.getResources();
+    }
+
+    @Override
+    public ClassLoader pureGetClassLoader() {
+        return super.getClassLoader();
+    }
+
+    @Override
+    public LayoutInflater pureGetLayoutInflater() {
+        return super.getLayoutInflater();
     }
 }
