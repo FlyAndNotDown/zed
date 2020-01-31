@@ -1,2 +1,2 @@
-include ':runtime', ':host-app', ':plugin-app'
+include ':runtime', ':host-app', ':plugin-app', ':transform'
 rootProject.name='zed'
