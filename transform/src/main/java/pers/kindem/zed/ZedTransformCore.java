@@ -14,6 +14,11 @@ public class ZedTransformCore {
         return path.substring(path.indexOf("classes" + File.separator) + 8, path.length() - 6).replaceAll(File.separator, ".");
     }
 
+    public static void init() {
+        ClassPool.getDefault().makeClass(CLASS_NAME_ANDROID_ACTIVITY);
+        ClassPool.getDefault().makeClass(CLASS_NAME_PLUGIN_ACTIVITY);
+    }
+
     public static void transformDir(File dir) throws TransformException {
         String dirPath = "";
         try {
@@ -69,7 +74,7 @@ public class ZedTransformCore {
                 ctClass.writeFile();
             }
         } catch (NotFoundException e) {
-            throw new TransformException("failed to get ct class: " + formatClassName);
+            throw new TransformException("failed to get ct class: " + e.getMessage());
         } catch (CannotCompileException e) {
             throw new TransformException("failed to compile class");
         } catch (IOException e) {

@@ -38,10 +38,15 @@ public class ZedTransform extends Transform {
     }
 
     @Override
-    public void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
+    public void transform(TransformInvocation transformInvocation) throws InterruptedException, IOException {
         for (TransformInput transformInput : transformInvocation.getInputs()) {
             for (DirectoryInput directoryInput : transformInput.getDirectoryInputs()) {
-                ZedTransformCore.transformDir(directoryInput.getFile());
+                ZedTransformCore.init();
+                try {
+                    ZedTransformCore.transformDir(directoryInput.getFile());
+                } catch (TransformException e) {
+                    project.getLogger().error(e.getMessage());
+                }
                 FileUtils.copyDirectory(directoryInput.getFile(), transformInvocation.getOutputProvider().getContentLocation(
                     directoryInput.getName(),
                     directoryInput.getContentTypes(),
