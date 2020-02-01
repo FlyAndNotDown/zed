@@ -28,3 +28,11 @@ publishing {
         }
     }
 }
+
+task deleteDist() {
+    doLast {
+        delete('./dist')
+    }
+}
+
+project.tasks.getByName('publish').dependsOn(deleteDist)
