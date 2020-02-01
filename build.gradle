@@ -1,17 +1,18 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
+        maven { url uri('./transform/dist') }
         jcenter()
         google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'pers.kindem.zed:transform:1.0.0'
     }
 }
 
 allprojects {
     repositories {
+        maven { url uri('./transform/dist') }
         jcenter()
         google()
     }
