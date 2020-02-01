@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'zed-transform'
+apply plugin: 'pers.kindem.zed.transform'
 
 android {
     compileSdkVersion 29
