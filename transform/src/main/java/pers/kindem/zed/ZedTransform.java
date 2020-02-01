@@ -46,8 +46,6 @@ public class ZedTransform extends Transform {
                     directoryInput.getScopes(),
                     Format.DIRECTORY
                 );
-                System.out.println(directoryInput.getFile().getParent());
-                System.out.println(outputFile.getAbsoluteFile().getAbsolutePath());
                 ZedTransformCore.init();
                 try {
                     ZedTransformCore.transformDir(directoryInput.getFile());
