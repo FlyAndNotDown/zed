@@ -3,7 +3,6 @@ package pers.kindem.zed;
 import com.android.build.api.transform.*;
 import com.android.build.gradle.internal.pipeline.TransformManager;
 import com.android.utils.FileUtils;
-import javassist.CtClass;
 import org.gradle.api.Project;
 
 import java.io.File;
@@ -41,18 +40,21 @@ public class ZedTransform extends Transform {
     public void transform(TransformInvocation transformInvocation) throws InterruptedException, IOException {
         for (TransformInput transformInput : transformInvocation.getInputs()) {
             for (DirectoryInput directoryInput : transformInput.getDirectoryInputs()) {
+                File outputFile = transformInvocation.getOutputProvider().getContentLocation(
+                    directoryInput.getName(),
+                    directoryInput.getContentTypes(),
+                    directoryInput.getScopes(),
+                    Format.DIRECTORY
+                );
+                System.out.println(directoryInput.getFile().getParent());
+                System.out.println(outputFile.getAbsoluteFile().getAbsolutePath());
                 ZedTransformCore.init();
                 try {
                     ZedTransformCore.transformDir(directoryInput.getFile());
                 } catch (TransformException e) {
                     project.getLogger().error(e.getMessage());
                 }
-                FileUtils.copyDirectory(directoryInput.getFile(), transformInvocation.getOutputProvider().getContentLocation(
-                    directoryInput.getName(),
-                    directoryInput.getContentTypes(),
-                    directoryInput.getScopes(),
-                    Format.DIRECTORY
-                ));
+                FileUtils.copyDirectory(new File(Constant.TRANSFORM_OUTPUT_PATH), outputFile);
             }
         }
     }

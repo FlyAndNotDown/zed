@@ -1,15 +1,13 @@
 package pers.kindem.zed;
 
 import javassist.*;
-import org.gradle.api.Project;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ZedTransformCore {
-    private static String CLASS_NAME_ANDROID_ACTIVITY = "android.app.Activity";
-    private static String CLASS_NAME_PLUGIN_ACTIVITY = "pers.kindem.zed.runtime.container.activity.PluginActivity";
+import static pers.kindem.zed.Constant.*;
 
+public class ZedTransformCore {
     private static String formatClass(String path) {
         return path.substring(path.indexOf("classes" + File.separator) + 8, path.length() - 6).replaceAll(File.separator, ".");
     }
@@ -71,7 +69,7 @@ public class ZedTransformCore {
             if (ctClass.getSuperclass().getName().endsWith(CLASS_NAME_ANDROID_ACTIVITY)) {
                 CtClass pluginActivityClass = ClassPool.getDefault().getCtClass(CLASS_NAME_PLUGIN_ACTIVITY);
                 ctClass.setSuperclass(pluginActivityClass);
-                ctClass.writeFile();
+                ctClass.writeFile(TRANSFORM_OUTPUT_PATH);
             }
         } catch (NotFoundException e) {
             throw new TransformException("failed to get ct class: " + e.getMessage());
