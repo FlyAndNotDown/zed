@@ -2,7 +2,14 @@
   "name": "spider",
   "version": "1.0.0",
   "description": "spider of Android Developer APIs",
-  "scripts": {},
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "author": "John Kindem",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
 }
