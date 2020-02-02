@@ -1,0 +1,46 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+group 'pers.kindem.zed'
+version '1.0.0'
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation 'com.android.tools.build:gradle:3.5.3'
+    implementation 'org.javassist:javassist:3.26.0-GA'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'pers.kindem.zed'
+            artifactId 'transform'
+            version '1.0.0'
+
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url uri('./dist')
+        }
+    }
+}
+
+task deleteDist() {
+    doLast {
+        delete('./dist')
+    }
+}
+
+project.tasks.getByName('publish').dependsOn(deleteDist)
