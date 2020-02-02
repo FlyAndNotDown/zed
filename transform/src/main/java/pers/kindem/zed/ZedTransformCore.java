@@ -9,6 +9,13 @@ import java.util.Arrays;
 import static pers.kindem.zed.Constant.*;
 
 public class ZedTransformCore {
+    private static ClassMap transformClassMap = new ClassMap();
+
+    static {
+        transformClassMap.put(CLASS_NAME_ANDROID_ACTIVITY, CLASS_NAME_PLUGIN_ACTIVITY);
+        transformClassMap.put(CLASS_NAME_ANDROID_CONTEXT, CLASS_NAME_PLUGIN_CONTEXT);
+    }
+
     private static String formatClass(String path) {
         return path.substring(path.indexOf("classes" + File.separator) + 8, path.length() - 6).replaceAll(File.separator, ".");
     }
@@ -78,9 +85,10 @@ public class ZedTransformCore {
 
                 CtConstructor ctConstructor = targetClass.getDeclaredConstructor(null);
                 ctConstructor.setModifiers(Modifier.PUBLIC);
-
-                targetClass.writeFile(TRANSFORM_OUTPUT_PATH);
             }
+
+            targetClass.replaceClassName(transformClassMap);
+            targetClass.writeFile(TRANSFORM_OUTPUT_PATH);
         } catch (NotFoundException e) {
             throw new TransformException("failed to get ct class: " + e.getMessage());
         } catch (CannotCompileException e) {
