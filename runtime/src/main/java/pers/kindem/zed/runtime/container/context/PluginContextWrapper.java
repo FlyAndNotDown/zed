@@ -16,6 +16,10 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     private LayoutInflater layoutInflater;
     private Context baseContext;
 
+    public PluginContextWrapper() {
+        super(null);
+    }
+
     public PluginContextWrapper(Context base) {
         super(base);
         baseContext = base;
@@ -34,6 +38,11 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     @Override
     public void setPluginApplication(PluginApplication pluginApplication) {
         this.pluginApplication = pluginApplication;
+    }
+
+    @Override
+    public void setBaseContext(Context baseContext) {
+        this.baseContext = baseContext;
     }
 
     @Override

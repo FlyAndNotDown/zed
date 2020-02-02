@@ -10,6 +10,10 @@ import pers.kindem.zed.runtime.container.context.PluginContextThemeWrapper;
 public class PluginActivity extends PluginContextThemeWrapper implements PluginActivityDefined {
     private ContainerActivityCallback containerActivityCallback;
 
+    public PluginActivity() {
+        super(null);
+    }
+
     public PluginActivity(Context base) {
         super(base);
     }

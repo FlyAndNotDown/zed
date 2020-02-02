@@ -1,13 +1,10 @@
 package pers.kindem.zed.runtime.loader;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,20 +31,10 @@ public class PluginLoader {
             return null;
         }
 
-        Constructor pluginComponentConstructor = null;
-        try {
-            pluginComponentConstructor = pluginComponentClass.getConstructor(Context.class);
-        } catch (NoSuchMethodException e) {
-            LogUtil.e(TAG, "failed to get constructor of component");
-        }
-        if (pluginComponentConstructor == null) {
-            return null;
-        }
-
         Context pluginComponent = null;
         try {
-            pluginComponent = (Context) pluginComponentConstructor.newInstance(hostContext);
-        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            pluginComponent = (Context) pluginComponentClass.newInstance();
+        } catch (IllegalAccessException | InstantiationException e) {
             LogUtil.e(TAG, "failed to instantiate plugin component");
         }
         if (pluginComponent == null) {

@@ -74,6 +74,7 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
         pluginActivity.setPluginClassLoader(pluginClassLoader);
         pluginActivity.setPluginApplication(pluginApplication);
         pluginActivity.setPluginResources(pluginResources);
+        pluginActivity.setBaseContext(this);
         return true;
     }
 

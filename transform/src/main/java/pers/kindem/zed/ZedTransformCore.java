@@ -4,6 +4,7 @@ import javassist.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static pers.kindem.zed.Constant.*;
 
@@ -15,6 +16,7 @@ public class ZedTransformCore {
     public static void init() {
         ClassPool.getDefault().makeClass(CLASS_NAME_ANDROID_ACTIVITY);
         ClassPool.getDefault().makeClass(CLASS_NAME_PLUGIN_ACTIVITY);
+        ClassPool.getDefault().makeClass(CLASS_NAME_ANDROID_CONTEXT);
     }
 
     public static void transformDir(File dir) throws TransformException {
@@ -65,16 +67,24 @@ public class ZedTransformCore {
 
         String formatClassName = formatClass(filePath);
         try {
-            CtClass ctClass = ClassPool.getDefault().getCtClass(formatClassName);
-            if (ctClass.getSuperclass().getName().endsWith(CLASS_NAME_ANDROID_ACTIVITY)) {
+            CtClass targetClass = ClassPool.getDefault().getCtClass(formatClassName);
+            if (targetClass.isFrozen()) {
+                targetClass.defrost();
+            }
+
+            if (targetClass.getSuperclass().getName().endsWith(CLASS_NAME_ANDROID_ACTIVITY)) {
                 CtClass pluginActivityClass = ClassPool.getDefault().getCtClass(CLASS_NAME_PLUGIN_ACTIVITY);
-                ctClass.setSuperclass(pluginActivityClass);
-                ctClass.writeFile(TRANSFORM_OUTPUT_PATH);
+                targetClass.setSuperclass(pluginActivityClass);
+
+                CtConstructor ctConstructor = targetClass.getDeclaredConstructor(null);
+                ctConstructor.setModifiers(Modifier.PUBLIC);
+
+                targetClass.writeFile(TRANSFORM_OUTPUT_PATH);
             }
         } catch (NotFoundException e) {
             throw new TransformException("failed to get ct class: " + e.getMessage());
         } catch (CannotCompileException e) {
-            throw new TransformException("failed to compile class");
+            throw new TransformException("failed to compile class: " + e.getMessage());
         } catch (IOException e) {
             throw new TransformException("failed to write file");
         }
