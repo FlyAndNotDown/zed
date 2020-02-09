@@ -3,6 +3,7 @@ import * as Cheerio from 'cheerio';
 import { Log } from "./log";
 import { default as Axios } from "axios";
 import * as FileSystem from 'fs';
+import * as Path from 'path';
 
 export interface API {
 
@@ -23,16 +24,34 @@ export class Spider {
     }
 
     private static getApis(source: string): API[] {
-        return null;
+        // TODO
+        return [];
     }
 
     private static parseApisObjectToText(apis: API[]): string {
         const result: string = '';
-        apis.forEach(api => {});
+        apis.forEach(api => {
+            // TODO
+        });
         return result;
     }
 
+    private static checkAndMkdir(path: string): void {
+        const parent: string = Path.resolve(path, '..');
+        console.log('parent:', parent);
+        if (!FileSystem.existsSync(parent)) {
+            Spider.checkAndMkdir(parent);
+        }
+        if (!FileSystem.existsSync(path)) {
+            FileSystem.mkdirSync(path);
+        }
+    }
+
     private static save(file: string, content: string): void {
+        Spider.checkAndMkdir(Path.resolve(file, '..'));
+        if (FileSystem.existsSync(file)) {
+            FileSystem.unlinkSync(file);
+        }
         FileSystem.writeFileSync(file, content);
     }
 
@@ -43,7 +62,7 @@ export class Spider {
         const protectedMethodSource: string = splitTemp[2].split('<!-- ========= END OF CLASS DATA ========= -->')[0];
         const publicApis: API[] = Spider.getApis(publicMethodSource);
         const protectedApis: API[] = Spider.getApis(protectedMethodSource);
-        Spider.save('../output/activity/public.txt', Spider.parseApisObjectToText(publicApis));
-        Spider.save('../output/activity/protected', Spider.parseApisObjectToText(protectedApis));
+        Spider.save(Path.resolve(config.save, 'activity', 'public.txt'), Spider.parseApisObjectToText(publicApis));
+        Spider.save(Path.resolve(config.save, 'activity', 'protected.txt'), Spider.parseApisObjectToText(protectedApis));
     }
 }
