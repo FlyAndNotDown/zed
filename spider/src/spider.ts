@@ -24,8 +24,14 @@ export class Spider {
     }
 
     private static getApis(source: string): API[] {
-        // TODO
-        return [];
+        const apis: API[] = [];
+        const $: CheerioStatic = Cheerio.load(source);
+        let apiCount: number = 0;
+        $('div[data-version-added]').each(function (index, element) {
+            apiCount++;
+        });
+        Log.log('info', `found total ${apiCount} apis`);
+        return apis;
     }
 
     private static parseApisObjectToText(apis: API[]): string {
@@ -38,7 +44,6 @@ export class Spider {
 
     private static checkAndMkdir(path: string): void {
         const parent: string = Path.resolve(path, '..');
-        console.log('parent:', parent);
         if (!FileSystem.existsSync(parent)) {
             Spider.checkAndMkdir(parent);
         }
@@ -60,9 +65,17 @@ export class Spider {
         const splitTemp: string[] = source.split('<!-- ========= METHOD DETAIL ======== -->');
         const publicMethodSource: string = splitTemp[1];
         const protectedMethodSource: string = splitTemp[2].split('<!-- ========= END OF CLASS DATA ========= -->')[0];
+
+        Log.log('info', 'starting fetch activity public apis');
         const publicApis: API[] = Spider.getApis(publicMethodSource);
+        const publicApisSavePath: string = Path.resolve(config.save, 'activity', 'public.txt');
+        Log.log('info', `saved apis to ${publicApisSavePath}`);
+        Spider.save(publicApisSavePath, Spider.parseApisObjectToText(publicApis));
+
+        Log.log('info', 'starting fetch activity protected apis');
         const protectedApis: API[] = Spider.getApis(protectedMethodSource);
-        Spider.save(Path.resolve(config.save, 'activity', 'public.txt'), Spider.parseApisObjectToText(publicApis));
-        Spider.save(Path.resolve(config.save, 'activity', 'protected.txt'), Spider.parseApisObjectToText(protectedApis));
+        const protectedSavePath: string = Path.resolve(config.save, 'activity', 'protected.txt');
+        Log.log('info', `saved apis to ${protectedSavePath}`);
+        Spider.save(protectedSavePath, Spider.parseApisObjectToText(protectedApis));
     }
 }
