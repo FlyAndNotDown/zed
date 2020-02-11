@@ -6,7 +6,9 @@ import * as FileSystem from 'fs';
 import * as Path from 'path';
 
 export interface API {
-
+    name: string,
+    levelAdded: number,
+    levelDeprecated: number
 }
 
 export class Spider {
@@ -27,7 +29,12 @@ export class Spider {
         const apis: API[] = [];
         const $: CheerioStatic = Cheerio.load(source);
         let apiCount: number = 0;
-        $('div[data-version-added]').each(function (index, element) {
+        $('div[data-version-added]').each(function () {
+            apis.push({
+                name: $('h3.api-name', this).text(),
+                levelAdded: parseInt($(this).attr('data-version-added')),
+                levelDeprecated: parseInt($(this).attr('data-version-deprecated')) || 0
+            });
             apiCount++;
         });
         Log.log('info', `found total ${apiCount} apis`);
