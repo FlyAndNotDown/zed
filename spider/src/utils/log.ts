@@ -1,6 +1,6 @@
-import { config } from "./config";
+import { config } from "../config";
 
-export class Log {
+export class LogUtil {
     public static log(tag: String, info: String): void {
         if (!config.log) {
             return;
