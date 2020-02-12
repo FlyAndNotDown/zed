@@ -10,7 +10,8 @@ export interface API {
     name: string,
     levelAdded: string,
     levelDeprecated: string,
-    prototype: string
+    prototype: string,
+    throws: string
 }
 
 export interface ApiExcelSheet {
@@ -43,6 +44,17 @@ export class Spider {
             .replace(/ \(/g, '(');
     }
 
+    private static getThrows($: CheerioStatic, context: CheerioElement): string {
+        let throws: string = "";
+        $('table', context).each(function () {
+            const tableTitle: string = $('th', this).text();
+            if (tableTitle === 'Throws') {
+                throws = $('td', this).first().text();
+            }
+        });
+        return throws;
+    }
+
     private static getApis(source: string): API[] {
         const apis: API[] = [];
         const $: CheerioStatic = Cheerio.load(source);
@@ -52,7 +64,8 @@ export class Spider {
                 name: $('h3.api-name', context).text(),
                 levelAdded: $(context).attr('data-version-added'),
                 levelDeprecated: $(context).attr('data-version-deprecated') || '0',
-                prototype: Spider.getApiPrototype($, context)
+                prototype: Spider.getApiPrototype($, context),
+                throws: Spider.getThrows($, context)
             });
             apiCount++;
         });
@@ -72,7 +85,7 @@ export class Spider {
 
     private static parseApisToExcelSheet(apis: API[], name: string): ApiExcelSheet {
         const title: string[] = [
-            'Name', 'LevelAdded', 'LevelDeprecated', 'Prototype'
+            'Name', 'LevelAdded', 'LevelDeprecated', 'Prototype', 'Throws'
         ];
         let rows: string[][] = [title];
 
@@ -81,7 +94,8 @@ export class Spider {
                 api.name,
                 api.levelAdded,
                 api.levelDeprecated,
-                api.prototype
+                api.prototype,
+                api.throws
             ]);
         });
 
