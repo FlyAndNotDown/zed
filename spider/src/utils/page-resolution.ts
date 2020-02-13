@@ -25,9 +25,8 @@ export class PageResolutionUtil {
         return throws;
     }
 
-    public static getApis(source: string): API[] {
+    public static getApis($: CheerioStatic): API[] {
         const apis: API[] = [];
-        const $: CheerioStatic = Cheerio.load(source);
         let apiCount: number = 0;
         $('div[data-version-added]').each(function (index, context) {
             apis.push({
