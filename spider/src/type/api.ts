@@ -3,7 +3,7 @@ export interface API {
     levelAdded: string,
     levelDeprecated: string,
     prototype: string,
-    throws: string
+    throws: string,
 }
 
 export interface ApiExcelSheet {

@@ -28,13 +28,18 @@ export class PageResolutionUtil {
     public static getApis($: CheerioStatic): API[] {
         const apis: API[] = [];
         let apiCount: number = 0;
-        $('div[data-version-added]').each(function (index, context) {
+        $('div[data-version-added]').each(function () {
+            const name: string = $('h3.api-name', this).text();
+            const firstChar: string = name.charAt(0);
+            if (firstChar >= 'A' && firstChar <= 'Z') {
+                return;
+            }
             apis.push({
-                name: $('h3.api-name', context).text(),
-                levelAdded: $(context).attr('data-version-added'),
-                levelDeprecated: $(context).attr('data-version-deprecated') || '0',
-                prototype: PageResolutionUtil.getApiPrototype($, context),
-                throws: PageResolutionUtil.getThrows($, context)
+                name: name,
+                levelAdded: $(this).attr('data-version-added'),
+                levelDeprecated: $(this).attr('data-version-deprecated') || '0',
+                prototype: PageResolutionUtil.getApiPrototype($, this),
+                throws: PageResolutionUtil.getThrows($, this)
             });
             apiCount++;
         });

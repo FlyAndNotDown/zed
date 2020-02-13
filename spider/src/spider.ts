@@ -22,7 +22,15 @@ export class Spider {
         await Spider.fetchApis(
             'activity',
             config.url.activity,
-            Path.resolve(config.save, 'activity', 'apis.xlsx')
+            Path.resolve(config.save, 'activity.xlsx')
+        );
+    }
+
+    public static async fetchServiceApis(): Promise<void> {
+        await Spider.fetchApis(
+            'service',
+            config.url.service,
+            Path.resolve(config.save, 'service.xlsx')
         );
     }
 }
