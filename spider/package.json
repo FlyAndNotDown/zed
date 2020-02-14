@@ -4,9 +4,11 @@
   "description": "spider of Android Developer APIs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "prod": "node ./dist/index.js",
+    "build": "tsc"
   },
-  "author": "John Kindem",
+  "author": "Kindem",
   "license": "MIT",
   "devDependencies": {
     "@types/axios": "^0.14.0",
