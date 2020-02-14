@@ -38,7 +38,7 @@ export class PageResolutionUtil {
 
     private static checkNeedSave(name: string): boolean {
         const firstChar: string = name.charAt(0);
-        return !(firstChar >= 'A' && firstChar <= 'Z' || name === '<init>');
+        return !(firstChar >= 'A' && firstChar <= 'Z' || name === '<init>' || name.startsWith('android:'));
     }
 
     public static getApis($: CheerioStatic): API[] {

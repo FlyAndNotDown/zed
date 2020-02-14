@@ -5,6 +5,7 @@ import { NetworkUtil } from "./utils/network";
 import { PageResolutionUtil } from "./utils/page-resolution";
 import { FileUtil } from "./utils/file";
 import { API, ApiExcelSheet } from "./type/api";
+import { SpiderTask } from "./type/spider";
 import * as Cheerio from "cheerio";
 
 export class Spider {
@@ -18,19 +19,9 @@ export class Spider {
         FileUtil.save(savePath, [apiExcelSheet]);
     }
 
-    public static async fetchActivityApis(): Promise<void> {
-        await Spider.fetchApis(
-            'activity',
-            config.url.activity,
-            Path.resolve(config.save, 'activity.xlsx')
-        );
-    }
-
-    public static async fetchServiceApis(): Promise<void> {
-        await Spider.fetchApis(
-            'service',
-            config.url.service,
-            Path.resolve(config.save, 'service.xlsx')
-        );
+    public static async fetchPendingApis(spiderTasks: SpiderTask[]): Promise<void> {
+        spiderTasks.forEach(spiderTask => {
+            Spider.fetchApis(spiderTask.name, spiderTask.url, Path.resolve(config.save, `${spiderTask.name}.xlsx`));
+        });
     }
 }

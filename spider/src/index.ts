@@ -1,6 +1,6 @@
 import { Spider } from './spider';
+import { config } from "./config";
 
 (async function() {
-    await Spider.fetchActivityApis();
-    await Spider.fetchServiceApis();
+    await Spider.fetchPendingApis(config.tasks);
 })();
