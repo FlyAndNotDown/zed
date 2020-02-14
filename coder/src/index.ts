@@ -1,6 +1,6 @@
-import { Spider } from './spider';
+import { Coder } from "./core/coder";
 import { config } from "./config";
 
 (async function() {
-    await Spider.fetchPendingApis(config.tasks);
+    await Coder.executeCodingTasks(config.tasks);
 })();
