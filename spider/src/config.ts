@@ -15,7 +15,8 @@ export interface Config {
 export const config: Config = {
     log: true,
     url: {
-        activity: 'https://developer.android.google.cn/reference/android/app/Activity?hl=en'
+        activity: 'https://developer.android.google.cn/reference/android/app/Activity?hl=en',
+        service: 'https://developer.android.google.cn/reference/kotlin/android/app/Service?hl=en'
     },
     save: Path.resolve(__dirname, '../output')
 };
