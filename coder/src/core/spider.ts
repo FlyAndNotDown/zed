@@ -15,6 +15,6 @@ export class Spider {
         const apiExcelSheet: ApiExcelSheet = FileUtil.parseApisToExcelSheet(apis, 'activity');
         const savePath: string = `${spiderTask.name}.xlsx`;
         LogUtil.log('info', `saved apis to ${savePath}`);
-        FileUtil.save(savePath, [apiExcelSheet]);
+        FileUtil.saveApiExcelSheetToFile(savePath, [apiExcelSheet]);
     }
 }

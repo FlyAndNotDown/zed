@@ -36,11 +36,21 @@ export class FileUtil {
         };
     }
 
-    public static save(file: string, apiExcelSheets: ApiExcelSheet[]): void {
+    public static parseExcelSheetToApis(apiExcelSheet: ApiExcelSheet): API[] {
+        // TODO
+        return [];
+    }
+
+    public static saveApiExcelSheetToFile(file: string, apiExcelSheets: ApiExcelSheet[]): void {
         FileUtil.checkAndMkdir(Path.resolve(file, '..'));
         if (FileSystem.existsSync(file)) {
             FileSystem.unlinkSync(file);
         }
         FileSystem.writeFileSync(file, ExcelDealer.build(apiExcelSheets), 'binary');
+    }
+
+    public static loadApiExcelSheetFromFile(file: string): ApiExcelSheet[] {
+        // TODO
+        return [];
     }
 }
