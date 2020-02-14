@@ -1,7 +1,7 @@
 {
-  "name": "spider",
+  "name": "coder",
   "version": "1.0.0",
-  "description": "spider of Android Developer APIs",
+  "description": "auto coder of zed",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
