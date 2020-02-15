@@ -2,6 +2,6 @@ import { CodingTask } from "./task";
 
 export interface Config {
     log: boolean,
-    save: string,
+    apiSavePath: string,
     tasks: CodingTask[]
 }

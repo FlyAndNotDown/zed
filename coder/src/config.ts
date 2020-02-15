@@ -3,7 +3,7 @@ import { Config } from "./type/config";
 
 export const config: Config = {
     log: true,
-    save: Path.resolve(__dirname, '../output'),
+    apiSavePath: Path.resolve(__dirname, '..', 'output', 'apis'),
     tasks: [{
         packageName: 'pers.kindem.zed.test.container.activity',
         type: 'container',

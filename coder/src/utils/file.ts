@@ -37,8 +37,20 @@ export class FileUtil {
     }
 
     public static parseExcelSheetToApis(apiExcelSheet: ApiExcelSheet): API[] {
-        // TODO
-        return [];
+        const apis: API[] = [];
+        apiExcelSheet.data.forEach((row, index) => {
+            if (index === 0) {
+                return;
+            }
+            apis.push({
+                name: row[0],
+                levelAdded: row[1],
+                levelDeprecated: row[2],
+                prototype: row[3],
+                throws: row[4]
+            });
+        });
+        return apis;
     }
 
     public static saveApiExcelSheetToFile(file: string, apiExcelSheets: ApiExcelSheet[]): void {
@@ -50,7 +62,6 @@ export class FileUtil {
     }
 
     public static loadApiExcelSheetFromFile(file: string): ApiExcelSheet[] {
-        // TODO
-        return [];
+        return ExcelDealer.parse(file);
     }
 }
