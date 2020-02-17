@@ -10,7 +10,7 @@ export interface CopyTask {
 
 export interface CodingTask {
     packageName: string,
-    type: 'container' | 'sdk'
+    type: 'container' | 'sdk',
     preTask: SpiderTask,
     afterTask: CopyTask
 }

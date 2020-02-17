@@ -2,9 +2,14 @@ import { CodingTask } from "../type/task";
 import { API } from "../type/api";
 import { Spider } from "./spider";
 import { Porter } from "./porter";
+import { FileUtil } from "../utils/file";
+import { config } from "../config";
+import * as Path from 'path';
 
 export class Coder {
     private static async codingContainer(codingTask: CodingTask): Promise<void> {
+        const apis: API[] = FileUtil.parseExcelSheetToApis(
+            FileUtil.loadApiExcelSheetFromFile(Path.resolve(config.apiSavePath, `${codingTask.preTask.name}.xlsx`))[0]);
         // TODO
     }
 
