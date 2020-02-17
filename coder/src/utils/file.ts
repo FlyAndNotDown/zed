@@ -64,4 +64,12 @@ export class FileUtil {
     public static loadApiExcelSheetFromFile(file: string): ApiExcelSheet[] {
         return ExcelDealer.parse(file);
     }
+
+    public static saveStringToFile(file: string, content: string) {
+        FileUtil.checkAndMkdir(Path.resolve(file, '..'));
+        if (FileSystem.existsSync(file)) {
+            FileSystem.unlinkSync(file);
+        }
+        FileSystem.writeFileSync(file, content);
+    }
 }
