@@ -1,3 +1,5 @@
+import { StringUtil } from "./string";
+
 export class CodeBuilder {
     protected code: string;
 
@@ -14,7 +16,7 @@ export class CodeBuilder {
         return this;
     }
 
-    public beginClass(type: 'class | interface', className: string, ext: string, impl: string): CodeBuilder {
+    public beginClass(type: 'class' | 'interface', className: string, ext: string, impl: string): CodeBuilder {
         this.code +=
             `public ${type} ${className} ` +
             ext == null || ext.length == 0 ? '' : `extends ${ext} ` +
@@ -25,7 +27,7 @@ export class CodeBuilder {
 
     public beginFunc(
         override: boolean,
-        access: 'public | protected | private',
+        access: 'public' | 'protected' | 'private',
         isStatic: boolean,
         ret: string,
         name: string,
@@ -69,30 +71,71 @@ export class ContainerCodeBuilder extends CodeBuilder {
         return new ContainerCodeBuilder('');
     }
 
+    public beginContainerClass(taskName: string): ContainerCodeBuilder {
+        return this.beginClass(
+            'class',
+            `Container${StringUtil.toFirstCharUpperCase(taskName)}`,
+            null,
+            `Container${StringUtil.toFirstCharUpperCase(taskName)}Callback`
+        ) as ContainerCodeBuilder;
+    }
+
+    public beginContainerCallbackInterface(taskName: string): ContainerCodeBuilder {
+        return this.beginClass(
+            'interface',
+            `Container${StringUtil.toFirstCharUpperCase(taskName)}Callback`,
+            null,
+            null
+        ) as ContainerCodeBuilder;
+    }
+
+    public beginPluginClass(taskName: string): ContainerCodeBuilder {
+        return this.beginClass(
+            'class',
+            `Plugin${StringUtil.toFirstCharUpperCase(taskName)}`,
+            null,
+            `Plugin${StringUtil.toFirstCharUpperCase(taskName)}Defined`
+        ) as ContainerCodeBuilder;
+    }
+
+    public beginPluginDefinedInterface(taskName: string): ContainerCodeBuilder {
+        return this.beginClass(
+            'interface',
+            `Plugin${StringUtil.toFirstCharUpperCase(taskName)}Defined`,
+            null,
+            null
+        ) as ContainerCodeBuilder;
+    }
+
     public addContainerFunc(
         taskName: string,
-        access: 'public | protected | private',
-        isState: boolean,
+        access: 'public' | 'protected' | 'private',
         ret: string,
-        name: string,
+        funcName: string,
         args: string,
         override: boolean
     ): ContainerCodeBuilder {
         const hasRet: boolean = ret != null && ret.length != 0;
         if (override) {
-            this.beginFunc(true, access, isState, ret, name, args)
-                .funcLine(`if (${taskName}Defined == null) {`)
-                .funcLine(`    ${hasRet ? '' : 'return '} super.${name};`)
-                .funcLine(`}`)
-                .funcLine(`${hasRet ? '' : 'return '} ${taskName}Defined.${name}`)
+            this.beginFunc(true, access, false, ret, funcName, args)
+                .funcLine(`    if (pluginDefined == null) {`)
+                .funcLine(`        ${hasRet ? '' : 'return '} super.${funcName};`)
+                .funcLine(`    }`)
+                .funcLine(`    ${hasRet ? '' : 'return '} $pluginDefined.${funcName}`)
                 .endFunc();
         }
-        return this.beginFunc(true, access, isState, ret, `origin${taskName.charAt(0).toUpperCase() + name.substring(1)}`, args)
-            .funcLine(`super.${name}`)
+        return this.beginFunc(true, access, false, ret, `origin${StringUtil.toFirstCharUpperCase(funcName)}`, args)
+            .funcLine(`    super.${funcName}`)
             .endFunc() as ContainerCodeBuilder;
     }
 
-    public addContainerCallbackFunc(): ContainerCodeBuilder {
+    public addContainerCallbackFunc(
+        taskName: string,
+        access: 'public' | 'protected' | 'private',
+        ret: string,
+        funcName: string,
+        args: string
+    ): ContainerCodeBuilder {
         // TODO
         return null;
     };
