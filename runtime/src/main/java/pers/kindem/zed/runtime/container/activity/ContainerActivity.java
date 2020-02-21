@@ -15,7 +15,7 @@ import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
 import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 import pers.kindem.zed.runtime.utils.Constant;
 
-public class ContainerActivity extends Activity implements ContainerActivityCallback {
+public class ContainerActivity extends BaseContainerActivity {
     private boolean beforeOnCreate = true;
     private PluginActivity pluginActivity;
 
@@ -147,30 +147,5 @@ public class ContainerActivity extends Activity implements ContainerActivityCall
     @Override
     public void pureSetContentView(int id) {
         super.setContentView(id);
-    }
-
-    @Override
-    public Resources pureGetResources() {
-        return super.getResources();
-    }
-
-    @Override
-    public ClassLoader pureGetClassLoader() {
-        return super.getClassLoader();
-    }
-
-    @Override
-    public LayoutInflater pureGetLayoutInflater() {
-        return super.getLayoutInflater();
-    }
-
-    @Override
-    public Resources.Theme pureGetTheme() {
-        return super.getTheme();
-    }
-
-    @Override
-    public void pureSetTheme(int resid) {
-        super.setTheme(resid);
     }
 }
