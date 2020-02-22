@@ -40,11 +40,11 @@ public class PluginInfo {
     }
 
     public boolean selfVerify() {
-        return StringUtil.verify(this.name) &&
-            StringUtil.verify(this.packageName) &&
-            StringUtil.verify(this.apkPath) &&
-            StringUtil.verify(this.optDir) &&
-            StringUtil.verify(this.libDir) &&
+        return StringUtil.notEmpty(this.name) &&
+            StringUtil.notEmpty(this.packageName) &&
+            StringUtil.notEmpty(this.apkPath) &&
+            StringUtil.notEmpty(this.optDir) &&
+            StringUtil.notEmpty(this.libDir) &&
             applicationName != null &&
             this.version != 0;
     }
