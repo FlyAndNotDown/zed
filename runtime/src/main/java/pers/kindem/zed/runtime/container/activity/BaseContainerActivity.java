@@ -734,646 +734,666 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
 
     @Override
     public void pureOnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        // TODO
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean pureOnSearchRequested(SearchEvent searchEvent) {
-        return false;
+        return super.onSearchRequested(searchEvent);
     }
 
     @Override
     public boolean pureOnSearchRequested() {
-        return false;
+        return super.onSearchRequested();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void pureOnStateNotSaved() {
-
+        super.onStateNotSaved();
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureOnTopResumedActivityChanged(boolean isTopResumedActivity) {
-
+        super.onTopResumedActivityChanged(isTopResumedActivity);
     }
 
     @Override
     public boolean pureOnTouchEvent(MotionEvent event) {
-        return false;
+        return super.onTouchEvent(event);
     }
 
     @Override
     public boolean pureOnTrackballEvent(MotionEvent event) {
-        return false;
+        return super.onTrackballEvent(event);
     }
 
     @Override
     public void pureOnTrimMemory(int level) {
-
+        super.onTrimMemory(level);
     }
 
     @Override
     public void pureOnUserInteraction() {
-
+        super.onUserInteraction();
     }
 
     @Override
     public void pureOnVisibleBehindCanceled() {
-
+        super.onVisibleBehindCanceled();
     }
 
     @Override
     public void pureOnWindowAttributesChanged(WindowManager.LayoutParams params) {
-
+        super.onWindowAttributesChanged(params);
     }
 
     @Override
     public void pureOnWindowFocusChanged(boolean hasFocus) {
-
+        super.onWindowFocusChanged(hasFocus);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public ActionMode pureOnWindowStartingActionMode(ActionMode.Callback callback, int type) {
-        return null;
+        return super.onWindowStartingActionMode(callback, type);
     }
 
     @Override
     public ActionMode pureOnWindowStartingActionMode(ActionMode.Callback callback) {
-        return null;
+        return super.onWindowStartingActionMode(callback);
     }
 
     @Override
     public void pureOpenContextMenu(View view) {
-
+        super.openContextMenu(view);
     }
 
     @Override
     public void pureOpenOptionsMenu() {
-
+        super.openOptionsMenu();
     }
 
     @Override
     public void pureOverridePendingTransition(int enterAnim, int exitAnim) {
-
+        super.overridePendingTransition(enterAnim, exitAnim);
     }
 
     @Override
     public void purePostponeEnterTransition() {
-
+        super.postponeEnterTransition();
     }
 
     @Override
     public void pureRecreate() {
-
+        super.recreate();
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureRegisterActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
-
+        super.registerActivityLifecycleCallbacks(callback);
     }
 
     @Override
     public void pureRegisterForContextMenu(View view) {
-
+        super.registerForContextMenu(view);
     }
 
     @Override
     public boolean pureReleaseInstance() {
-        return false;
+        return super.releaseInstance();
     }
 
     @Override
     public void pureRemoveDialog(int id) {
-
+        super.removeDialog(id);
     }
 
     @Override
     public void pureReportFullyDrawn() {
-
+        super.reportFullyDrawn();
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public DragAndDropPermissions pureRequestDragAndDropPermissions(DragEvent event) {
-        return null;
+        return requestDragAndDropPermissions(event);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void pureRequestPermissions(String[] permissions, int requestCode) {
-
+        super.requestPermissions(permissions, requestCode);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureRequestShowKeyboardShortcuts() {
-
+        super.requestShowKeyboardShortcuts();
     }
 
     @Override
     public boolean pureRequestVisibleBehind(boolean visible) {
-        return false;
+        return super.requestVisibleBehind(visible);
     }
 
     @Override
     public boolean pureRequestWindowFeature(int featureId) {
-        return false;
+        return super.requestWindowFeature(featureId);
     }
 
     @Override
     public <T extends View> T pureRequireViewById(int id) {
-        return null;
+        return super.requireViewById(id);
     }
 
     @Override
     public void pureRunOnUiThread(Runnable action) {
-
+        super.runOnUiThread(action);
     }
 
     @Override
     public void pureSetActionBar(Toolbar toolbar) {
-
+        super.setActionBar(toolbar);
     }
 
     @Override
     public void pureSetContentTransitionManager(TransitionManager tm) {
-
+        super.setContentTransitionManager(tm);
     }
 
     @Override
     public void pureSetContentView(View view, ViewGroup.LayoutParams params) {
-
+        super.setContentView(view, params);
     }
 
     @Override
     public void pureSetContentView(View view) {
-
+        super.setContentView(view);
     }
 
     @Override
     public void pureSetContentView(int layoutResID) {
-
+        super.setContentView(layoutResID);
     }
 
     @Override
     public void pureSetDefaultKeyMode(int mode) {
-
+        super.setDefaultKeyMode(mode);
     }
 
     @Override
     public void pureSetEnterSharedElementCallback(SharedElementCallback callback) {
-
+        super.setEnterSharedElementCallback(callback);
     }
 
     @Override
     public void pureSetExitSharedElementCallback(SharedElementCallback callback) {
-
+        super.setExitSharedElementCallback(callback);
     }
 
     @Override
     public void pureSetFeatureDrawable(int featureId, Drawable drawable) {
-
+        super.setFeatureDrawable(featureId, drawable);
     }
 
     @Override
     public void pureSetFeatureDrawableAlpha(int featureId, int alpha) {
-
+        super.setFeatureDrawableAlpha(featureId, alpha);
     }
 
     @Override
     public void pureSetFeatureDrawableResource(int featureId, int resId) {
-
+        super.setFeatureDrawableResource(featureId, resId);
     }
 
     @Override
     public void pureSetFeatureDrawableUri(int featureId, Uri uri) {
-
+        super.setFeatureDrawableUri(featureId, uri);
     }
 
     @Override
     public void pureSetFinishOnTouchOutside(boolean finish) {
-
+        super.setFinishOnTouchOutside(finish);
     }
 
     @Override
     public void pureSetImmersive(boolean i) {
-
+        super.setImmersive(i);
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureSetInheritShowWhenLocked(boolean inheritShowWhenLocked) {
-
+        super.setInheritShowWhenLocked(inheritShowWhenLocked);
     }
 
     @Override
     public void pureSetIntent(Intent newIntent) {
-
+        super.setIntent(newIntent);
     }
 
     @Override
     public void pureSetMediaController(MediaController controller) {
-
+        super.setMediaController(controller);
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public void pureSetPictureInPictureParams(PictureInPictureParams params) {
-
+        super.setPictureInPictureParams(params);
     }
 
     @Override
-    public void pureSetProgress(int process) {
-
+    public void pureSetProgress(int progress) {
+        super.setProgress(progress);
     }
 
     @Override
     public void pureSetProgressBarIndeterminate(boolean indeterminate) {
-
+        super.setProgressBarIndeterminate(indeterminate);
     }
 
     @Override
     public void pureSetProgressBarIndeterminateVisibility(boolean visible) {
-
+        super.setProgressBarIndeterminateVisibility(visible);
     }
 
     @Override
     public void pureSetProgressBarVisibility(boolean visible) {
-
+        super.setProgressBarVisibility(visible);
     }
 
     @Override
     public void pureSetRequestedOrientation(int requestedOrientation) {
-
+        super.setRequestedOrientation(requestedOrientation);
     }
 
     @Override
     public void pureSetResult(int resultCode, Intent data) {
-
+        super.setResult(resultCode, data);
     }
 
     @Override
     public void pureSetResult(int resultCode) {
-
+        super.setResult(resultCode);
     }
 
     @Override
     public void pureSetSecondaryProgress(int secondaryProgress) {
-
+        super.setSecondaryProgress(secondaryProgress);
     }
 
+    @TargetApi(Build.VERSION_CODES.O_MR1)
     @Override
     public void pureSetShowWhenLocked(boolean showWhenLocked) {
-
+        super.setShowWhenLocked(showWhenLocked);
     }
 
     @Override
     public void pureSetTaskDescription(ActivityManager.TaskDescription taskDescription) {
-
+        super.setTaskDescription(taskDescription);
     }
 
     @Override
     public void pureSetTheme(int resid) {
-
+        super.setTheme(resid);
     }
 
     @Override
     public void pureSetTitle(CharSequence title) {
-
+        super.setTitle(title);
     }
 
     @Override
     public void pureSetTitle(int titleId) {
-
+        super.setTitle(titleId);
     }
 
     @Override
     public void pureSetTitleColor(int textColor) {
-
+        super.setTitleColor(textColor);
     }
 
+    @TargetApi(Build.VERSION_CODES.O_MR1)
     @Override
     public void pureSetTurnScreenOn(boolean turnScreenOn) {
-
+        super.setTurnScreenOn(turnScreenOn);
     }
 
     @Override
     public void pureSetVisible(boolean visible) {
-
+        super.setVisible(visible);
     }
 
     @Override
     public void pureSetVolumeControlStream(int streamType) {
-
+        super.setVolumeControlStream(streamType);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureSetVrModeEnabled(boolean enabled, ComponentName requestedComponent) throws PackageManager.NameNotFoundException {
-
+        super.setVrModeEnabled(enabled, requestedComponent);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean pureShouldShowRequestPermissionRationale(String permission) {
-        return false;
+        return super.shouldShowRequestPermissionRationale(permission);
     }
 
     @Override
     public boolean pureShouldUpRecreateTask(Intent targetIntent) {
-        return false;
+        return super.shouldUpRecreateTask(targetIntent);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean pureShowAssist(Bundle args) {
-        return false;
+        return super.showAssist(args);
     }
 
     @Override
     public boolean pureShowDialog(int id, Bundle args) {
-        return false;
+        return super.showDialog(id, args);
     }
 
     @Override
     public void pureShowDialog(int id) {
-
+        super.showDialog(id);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void pureShowLockTaskEscapeMessage() {
-
+        super.showLockTaskEscapeMessage();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public ActionMode pureStartActionMode(ActionMode.Callback callback, int type) {
-        return null;
+        return super.startActionMode(callback, type);
     }
 
     @Override
     public ActionMode pureStartActionMode(ActionMode.Callback callback) {
-        return null;
+        return super.startActionMode(callback);
     }
 
     @Override
     public void pureStartActivities(Intent[] intents, Bundle options) throws ActivityNotFoundException {
-
+        super.startActivities(intents, options);
     }
 
     @Override
     public void pureStartActivities(Intent[] intents) throws ActivityNotFoundException {
-
+        super.startActivities(intents);
     }
 
     @Override
     public void pureStartActivity(Intent intent) throws ActivityNotFoundException {
-
+        super.startActivity(intent);
     }
 
     @Override
     public void pureStartActivity(Intent intent, Bundle options) throws ActivityNotFoundException {
-
+        super.startActivity(intent, options);
     }
 
     @Override
     public void pureStartActivityForResult(Intent intent, int requestCode) throws ActivityNotFoundException {
-
+        super.startActivityForResult(intent, requestCode);
     }
 
     @Override
     public void pureStartActivityForResult(Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
-
+        super.startActivityForResult(intent, requestCode, options);
     }
 
     @Override
     public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode) throws ActivityNotFoundException {
-
+        super.startActivityFromChild(child, intent, requestCode);
     }
 
     @Override
     public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
-
+        super.startActivityFromChild(child, intent, requestCode, options);
     }
 
     @Override
     public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
-
+        super.startActivityFromFragment(fragment, intent, requestCode, options);
     }
 
     @Override
     public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode) throws ActivityNotFoundException {
-
+        super.startActivityFromFragment(fragment, intent, requestCode);
     }
 
     @Override
     public boolean pureStartActivityIfNeeded(Intent intent, int requestCode, Bundle options) {
-        return false;
+        return super.startActivityIfNeeded(intent, requestCode, options);
     }
 
     @Override
     public boolean pureStartActivityIfNeeded(Intent intent, int requestCode) {
-        return false;
+        return super.startActivityIfNeeded(intent, requestCode);
     }
 
     @Override
     public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
-
+        super.startIntentSender(intent, fillInIntent, flagsMask, flagsValues, extraFlags);
     }
 
     @Override
     public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
-
+        super.startIntentSender(intent, fillInIntent, flagsMask, flagsValues, extraFlags, options);
     }
 
     @Override
     public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
-
+        super.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags);
     }
 
     @Override
     public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
-
+        super.startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options);
     }
 
     @Override
     public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
-
+        super.startIntentSenderFromChild(child, intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options);
     }
 
     @Override
     public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
-
+        super.startIntentSenderFromChild(child, intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureStartLocalVoiceInteraction(Bundle privateOptions) {
-
+        super.startLocalVoiceInteraction(privateOptions);
     }
 
     @Override
     public void pureStartLockTask() {
-
+        super.startLockTask();
     }
 
     @Override
     public void pureStartManagingCursor(Cursor c) {
-
+        super.startManagingCursor(c);
     }
 
     @Override
     public boolean pureStartNextMatchingActivity(Intent intent, Bundle options) {
-        return false;
+        return super.startNextMatchingActivity(intent, options);
     }
 
     @Override
     public boolean pureStartNextMatchingActivity(Intent intent) {
-        return false;
+        return super.startNextMatchingActivity(intent);
     }
 
     @Override
     public void pureStartPostponedEnterTransition() {
-
+        super.startPostponedEnterTransition();
     }
 
     @Override
     public void pureStartSearch(String initialQuery, boolean selectInitialQuery, Bundle appSearchData, boolean globalSearch) {
-
+        super.startSearch(initialQuery, selectInitialQuery, appSearchData, globalSearch);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureStopLocalVoiceInteraction() {
-
+        super.stopLocalVoiceInteraction();
     }
 
     @Override
     public void pureStopLockTask() {
-
+        super.stopLockTask();
     }
 
     @Override
     public void pureStopManagingCursor(Cursor c) {
-
+        super.stopManagingCursor(c);
     }
 
     @Override
     public void pureTakeKeyEvents(boolean get) {
-
+        super.takeKeyEvents(get);
     }
 
     @Override
     public void pureTriggerSearch(String query, Bundle appSearchData) {
-
+        super.triggerSearch(query, appSearchData);
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureUnregisterActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
-
+        super.unregisterActivityLifecycleCallbacks(callback);
     }
 
     @Override
     public void pureUnregisterForContextMenu(View view) {
-
+        super.unregisterForContextMenu(view);
     }
 
     @Override
     public void pureAttachBaseContext(Context newBase) {
-
+        super.attachBaseContext(newBase);
     }
 
     @Override
     public void pureOnActivityResult(int requestCode, int resultCode, Intent data) {
-
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void pureOnApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
-
+        super.onApplyThemeResource(theme, resid, first);
     }
 
     @Override
     public void pureOnChildTitleChanged(Activity childActivity, CharSequence title) {
-
+        super.onChildTitleChanged(childActivity, title);
     }
 
     @Override
     public void pureOnCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public Dialog pureOnCreateDialog(int id) {
-        return null;
+        return super.onCreateDialog(id);
     }
 
     @Override
     public Dialog pureOnCreateDialog(int id, Bundle args) {
-        return null;
+        return super.onCreateDialog(id, args);
     }
 
     @Override
     public void pureOnDestroy() {
-
+        super.onDestroy();
     }
 
     @Override
     public void pureOnNewIntent(Intent intent) {
-
+        super.onNewIntent(intent);
     }
 
     @Override
     public void pureOnPause() {
-
+        super.onPause();
     }
 
     @Override
     public void pureOnPostCreate(Bundle savedInstanceState) {
-
+        super.onPostCreate(savedInstanceState);
     }
 
     @Override
     public void pureOnPostResume() {
-
+        super.onPostResume();
     }
 
     @Override
     public void pureOnPrepareDialog(int id, Dialog dialog, Bundle args) {
-
+        super.onPrepareDialog(id, dialog, args);
     }
 
     @Override
     public void pureOnPrepareDialog(int id, Dialog dialog) {
-
+        super.onPrepareDialog(id, dialog);
     }
 
     @Override
     public void pureOnRestart() {
-
+        super.onRestart();
     }
 
     @Override
     public void pureOnRestoreInstanceState(Bundle savedInstanceState) {
-
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     public void pureOnResume() {
-
+        super.onResume();
     }
 
     @Override
     public void pureOnSaveInstanceState(Bundle outState) {
-
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     public void pureOnStart() {
-
+        super.onStart();
     }
 
     @Override
     public void pureOnStop() {
-
+        super.onStop();
     }
 
     @Override
     public void pureOnTitleChanged(CharSequence title, int color) {
-
+        super.onTitleChanged(title, color);
     }
 
     @Override
     public void pureOnUserLeaveHint() {
-
+        super.onUserLeaveHint();
     }
 }

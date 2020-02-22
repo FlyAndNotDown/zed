@@ -258,7 +258,7 @@ public interface ContainerActivityCallback {
     void pureSetIntent(Intent newIntent);
     void pureSetMediaController(MediaController controller);
     void pureSetPictureInPictureParams(PictureInPictureParams params);
-    void pureSetProgress(int process);
+    void pureSetProgress(int progress);
     void pureSetProgressBarIndeterminate(boolean indeterminate);
     void pureSetProgressBarIndeterminateVisibility(boolean visible);
     void pureSetProgressBarVisibility(boolean visible);
