@@ -1,5 +1,6 @@
 package pers.kindem.zed.runtime.container.activity;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -28,7 +29,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.media.session.MediaController;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.PersistableBundle;
@@ -52,7 +55,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
-import android.widget.MediaController;
 import android.widget.Toolbar;
 
 import java.util.List;
@@ -63,652 +65,676 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
 
     @Override
     public void pureAddContentView(View view, ViewGroup.LayoutParams params) {
-
+        super.addContentView(view, params);
     }
 
     @Override
     public void pureCloseContextMenu() {
-
+        super.closeContextMenu();
     }
 
     @Override
     public void pureCloseOptionsMenu() {
-
+        super.closeOptionsMenu();
     }
 
     @Override
     public PendingIntent pureCreatePendingResult(int requestCode, Intent data, int flags) {
-        return null;
+        return super.createPendingResult(requestCode, data, flags);
     }
 
     @Override
     public void pureDismissDialog(int id) throws IllegalArgumentException {
-
+        super.dismissDialog(id);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureDismissKeyboardShortcutsHelper() {
-
+        super.dismissKeyboardShortcutsHelper();
     }
 
     @Override
     public boolean pureDispatchGenericMotionEvent(MotionEvent ev) {
-        return false;
+        return super.dispatchGenericMotionEvent(ev);
     }
 
     @Override
     public boolean pureDispatchKeyEvent(KeyEvent event) {
-        return false;
+        return super.dispatchKeyEvent(event);
     }
 
     @Override
     public boolean pureDispatchKeyShortcutEvent(KeyEvent event) {
-        return false;
+        return super.dispatchKeyShortcutEvent(event);
     }
 
     @Override
     public boolean pureDispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
-        return false;
+        return super.dispatchPopulateAccessibilityEvent(event);
     }
 
     @Override
     public boolean pureDispatchTouchEvent(MotionEvent ev) {
-        return false;
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean pureDispatchTrackballEvent(MotionEvent ev) {
-        return false;
+        return super.dispatchTrackballEvent(ev);
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public boolean pureEnterPictureInPictureMode(PictureInPictureParams params) {
-        return false;
+        return super.enterPictureInPictureMode(params);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
-    public boolean pureEnterPictureInPictureMode() {
-        return false;
+    public void pureEnterPictureInPictureMode() {
+        super.enterPictureInPictureMode();
     }
 
     @Override
     public <T extends View> T pureFindViewById(int id) {
-        return null;
+        return super.findViewById(id);
     }
 
     @Override
     public void pureFinish() {
-
+        super.finish();
     }
 
     @Override
     public void pureFinishActivity(int requestCode) {
-
+        super.finishActivity(requestCode);
     }
 
     @Override
     public void pureFinishActivityFromChild(Activity child, int requestCode) {
-
+        super.finishActivityFromChild(child, requestCode);
     }
 
     @Override
     public void pureFinishAffinity() {
-
+        super.finishAffinity();
     }
 
     @Override
     public void pureFinishAfterTransition() {
-
+        super.finishAfterTransition();
     }
 
     @Override
     public void pureFinishAndRemoveTask() {
-
+        super.finishAndRemoveTask();
     }
 
     @Override
     public void pureFinishFromChild(Activity child) {
-
+        super.finishFromChild(child);
     }
 
     @Override
     public ActionBar pureGetActionBar() {
-        return null;
+        return super.getActionBar();
     }
 
     @Override
     public Application pureGetApplication() {
-        return null;
+        return super.getApplication();
     }
 
     @Override
     public ComponentName pureGetCallingActivity() {
-        return null;
+        return super.getCallingActivity();
     }
 
     @Override
     public String pureGetCallingPackage() {
-        return null;
+        return super.getCallingPackage();
     }
 
     @Override
     public int pureGetChangingConfigurations() {
-        return 0;
+        return super.getChangingConfigurations();
     }
 
     @Override
     public ClassLoader pureGetClassLoader() {
-        return null;
+        return super.getClassLoader();
     }
 
     @Override
     public ComponentName pureGetComponentName() {
-        return null;
+        return super.getComponentName();
     }
 
     @Override
     public Scene pureGetContentScene() {
-        return null;
+        return super.getContentScene();
     }
 
     @Override
     public TransitionManager pureGetContentTransitionManager() {
-        return null;
+        return super.getContentTransitionManager();
     }
 
     @Override
     public View pureGetCurrentFocus() {
-        return null;
+        return super.getCurrentFocus();
     }
 
     @Override
     public FragmentManager pureGetFragmentManager() {
-        return null;
+        return super.getFragmentManager();
     }
 
     @Override
     public Intent pureGetIntent() {
-        return null;
+        return super.getIntent();
     }
 
     @Override
     public Object pureGetLastNonConfigurationInstance() {
-        return null;
+        return super.getLastNonConfigurationInstance();
     }
 
     @Override
     public LayoutInflater pureGetLayoutInflater() {
-        return null;
+        return super.getLayoutInflater();
     }
 
     @Override
     public LoaderManager pureGetLoaderManager() {
-        return null;
+        return super.getLoaderManager();
     }
 
     @Override
     public String pureGetLocalClassName() {
-        return null;
+        return super.getLocalClassName();
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public int pureGetMaxNumPictureInPictureActions() {
-        return 0;
+        return super.getMaxNumPictureInPictureActions();
     }
 
     @Override
     public MediaController pureGetMediaController() {
-        return null;
+        return super.getMediaController();
     }
 
     @Override
     public MenuInflater pureGetMenuInflater() {
-        return null;
+        return super.getMenuInflater();
     }
 
     @Override
     public Activity pureGetParent() {
-        return null;
+        return super.getParent();
     }
 
     @Override
     public Intent pureGetParentActivityIntent() {
-        return null;
+        return super.getParentActivityIntent();
     }
 
     @Override
     public SharedPreferences pureGetPreferences(int mode) {
-        return null;
+        return super.getPreferences(mode);
     }
 
     @Override
     public Uri pureGetReferrer() {
-        return null;
+        return super.getReferrer();
     }
 
     @Override
     public int pureGetRequestedOrientation() {
-        return 0;
+        return super.getRequestedOrientation();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public SearchEvent pureGetSearchEvent() {
-        return null;
+        return super.getSearchEvent();
     }
 
     @Override
     public Object pureGetSystemService(String name) {
-        return null;
+        return super.getSystemService(name);
     }
 
     @Override
     public int pureGetTaskId() {
-        return 0;
+        return super.getTaskId();
     }
 
     @Override
     public Resources.Theme pureGetTheme() {
-        return null;
+        return super.getTheme();
     }
 
     @Override
     public CharSequence pureGetTitle() {
-        return null;
+        return super.getTitle();
     }
 
     @Override
     public int pureGetTitleColor() {
-        return 0;
+        return super.getTitleColor();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public VoiceInteractor pureGetVoiceInteractor() {
-        return null;
+        return super.getVoiceInteractor();
     }
 
     @Override
     public int pureGetVolumeControlStream() {
-        return 0;
+        return super.getVolumeControlStream();
     }
 
     @Override
     public Window pureGetWindow() {
-        return null;
+        return super.getWindow();
     }
 
     @Override
     public WindowManager pureGetWindowManager() {
-        return null;
+        return super.getWindowManager();
     }
 
     @Override
     public boolean pureHasWindowFocus() {
-        return false;
+        return super.hasWindowFocus();
     }
 
     @Override
     public void pureInvalidateOptionsMenu() {
-
+        super.invalidateOptionsMenu();
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public boolean pureIsActivityTransitionRunning() {
-        return false;
+        return super.isActivityTransitionRunning();
     }
 
     @Override
     public boolean pureIsChangingConfigurations() {
-        return false;
+        return super.isChangingConfigurations();
     }
 
     @Override
     public boolean pureIsChild() {
-        return false;
+        return super.isChild();
     }
 
     @Override
     public boolean pureIsDestroyed() {
-        return false;
+        return super.isDestroyed();
     }
 
     @Override
     public boolean pureIsFinishing() {
-        return false;
+        return super.isFinishing();
     }
 
     @Override
     public boolean pureIsImmersive() {
-        return false;
+        return super.isImmersive();
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public boolean pureIsInMultiWindowMode() {
-        return false;
+        return super.isInMultiWindowMode();
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public boolean pureIsInPictureInPictureMode() {
-        return false;
+        return super.isInPictureInPictureMode();
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public boolean pureIsLocalVoiceInteractionSupported() {
-        return false;
+        return super.isLocalVoiceInteractionSupported();
     }
 
     @Override
     public boolean pureIsTaskRoot() {
-        return false;
+        return super.isTaskRoot();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean pureIsVoiceInteraction() {
-        return false;
+        return super.isVoiceInteraction();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean pureIsVoiceInteractionRoot() {
-        return false;
+        return super.isVoiceInteractionRoot();
     }
 
     @Override
     public Cursor pureManagedQuery(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return null;
+        return super.managedQuery(uri, projection, selection, selectionArgs, sortOrder);
     }
 
     @Override
     public boolean pureMoveTaskToBack(boolean nonRoot) {
-        return false;
+        return super.moveTaskToBack(nonRoot);
     }
 
     @Override
     public boolean pureNavigateUpTo(Intent upIntent) {
-        return false;
+        return super.navigateUpTo(upIntent);
     }
 
     @Override
     public boolean pureNavigateUpToFromChild(Activity child, Intent upIntent) {
-        return false;
+        return super.navigateUpToFromChild(child, upIntent);
     }
 
     @Override
     public void pureOnActionModeFinished(ActionMode mode) {
-
+        super.onActionModeFinished(mode);
     }
 
     @Override
     public void pureOnActionModeStarted(ActionMode mode) {
-
+        super.onActionModeStarted(mode);
     }
 
     @Override
     public void pureOnActivityReenter(int resultCode, Intent data) {
-
+        super.onActivityReenter(resultCode, data);
     }
 
     @Override
     public void pureOnAttachFragment(Fragment fragment) {
-
+        super.onAttachFragment(fragment);
     }
 
     @Override
     public void pureOnAttachedToWindow() {
-
+        super.onAttachedToWindow();
     }
 
     @Override
     public void pureOnBackPressed() {
-
+        super.onBackPressed();
     }
 
     @Override
     public void pureOnConfigurationChanged(Configuration newConfig) {
-
+        super.onConfigurationChanged(newConfig);
     }
 
     @Override
     public void pureOnContentChanged() {
-
+        super.onContentChanged();
     }
 
     @Override
     public boolean pureOnContextItemSelected(MenuItem item) {
-        return false;
+        return super.onContextItemSelected(item);
     }
 
     @Override
     public void pureOnContextMenuClosed(Menu menu) {
-
+        super.onContextMenuClosed(menu);
     }
 
     @Override
     public void pureOnCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-
+        super.onCreate(savedInstanceState, persistentState);
     }
 
     @Override
     public void pureOnCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-
+        super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     @Override
     public CharSequence pureOnCreateDescription() {
-        return null;
+        return super.onCreateDescription();
     }
 
     @Override
     public void pureOnCreateNavigateUpTaskStack(TaskStackBuilder builder) {
-
+        super.onCreateNavigateUpTaskStack(builder);
     }
 
     @Override
     public boolean pureOnCreateOptionsMenu(Menu menu) {
-        return false;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean pureOnCreatePanelMenu(int featureId, Menu menu) {
-        return false;
+        return super.onCreatePanelMenu(featureId, menu);
     }
 
     @Override
     public View pureOnCreatePanelView(int featureId) {
-        return null;
+        return super.onCreatePanelView(featureId);
     }
 
     @Override
     public boolean pureOnCreateThumbnail(Bitmap outBitmap, Canvas canvas) {
-        return false;
+        return super.onCreateThumbnail(outBitmap, canvas);
     }
 
     @Override
     public View pureOnCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        return null;
+        return super.onCreateView(parent, name, context, attrs);
     }
 
     @Override
     public View pureOnCreateView(String name, Context context, AttributeSet attrs) {
-        return null;
+        return super.onCreateView(name, context, attrs);
     }
 
     @Override
     public void pureOnDetachedFromWindow() {
-
+        super.onDetachedFromWindow();
     }
 
     @Override
     public void pureOnEnterAnimationComplete() {
-
+        super.onEnterAnimationComplete();
     }
 
     @Override
     public boolean pureOnGenericMotionEvent(MotionEvent event) {
-        return false;
+        return super.onGenericMotionEvent(event);
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureOnGetDirectActions(CancellationSignal cancellationSignal, Consumer<List<DirectAction>> callback) {
-
+        super.onGetDirectActions(cancellationSignal, callback);
     }
 
     @Override
     public boolean pureOnKeyDown(int keyCode, KeyEvent event) {
-        return false;
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
     public boolean pureOnKeyLongPress(int keyCode, KeyEvent event) {
-        return false;
+        return super.onKeyLongPress(keyCode, event);
     }
 
     @Override
     public boolean pureOnKeyMultiple(int keyCode, int repeatCount, KeyEvent event) {
-        return false;
+        return super.onKeyMultiple(keyCode, repeatCount, event);
     }
 
     @Override
     public boolean pureOnKeyShortcut(int keyCode, KeyEvent event) {
-        return false;
+        return super.onKeyShortcut(keyCode, event);
     }
 
     @Override
     public boolean pureOnKeyUp(int keyCode, KeyEvent event) {
-        return false;
+        return super.onKeyUp(keyCode, event);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureOnLocalVoiceInteractionStarted() {
-
+        super.onLocalVoiceInteractionStarted();
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureOnLocalVoiceInteractionStopped() {
-
+        super.onLocalVoiceInteractionStopped();
     }
 
     @Override
     public void pureOnLowMemory() {
-
+        super.onLowMemory();
     }
 
     @Override
     public boolean pureOnMenuItemSelected(int featureId, MenuItem item) {
-        return false;
+        return super.onMenuItemSelected(featureId, item);
     }
 
     @Override
     public boolean pureOnMenuOpened(int featureId, Menu menu) {
-        return false;
+        return super.onMenuOpened(featureId, menu);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureOnMultiWindowModeChanged(boolean isInMultiWindowMode) {
-
+        super.onMultiWindowModeChanged(isInMultiWindowMode);
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public void pureOnMultiWindowModeChanged(boolean isInMultiWindowMode, Configuration newConfig) {
-
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
     }
 
     @Override
     public boolean pureOnNavigateUp() {
-        return false;
+        return super.onNavigateUp();
     }
 
     @Override
     public boolean pureOnNavigateUpFromChild(Activity child) {
-        return false;
+        return super.onNavigateUpFromChild(child);
     }
 
     @Override
     public boolean pureOnOptionsItemSelected(MenuItem item) {
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void pureOnOptionsMenuClosed(Menu menu) {
-
+        super.onOptionsMenuClosed(menu);
     }
 
     @Override
     public void pureOnPanelClosed(int featureId, Menu menu) {
-
+        super.onPanelClosed(featureId, menu);
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
     @Override
     public void pureOnPerformDirectAction(String actionId, Bundle arguments, CancellationSignal cancellationSignal, Consumer<Bundle> resultListener) {
-
+        super.onPerformDirectAction(actionId, arguments, cancellationSignal, resultListener);
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     public void pureOnPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
-
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureOnPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
-
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
     }
 
     @Override
     public void pureOnPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-
+        super.onPostCreate(savedInstanceState, persistentState);
     }
 
     @Override
     public void pureOnPrepareNavigateUpTaskStack(TaskStackBuilder builder) {
-
+        super.onPrepareNavigateUpTaskStack(builder);
     }
 
     @Override
     public boolean pureOnPrepareOptionsMenu(Menu menu) {
-        return false;
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean pureOnPreparePanel(int featureId, View view, Menu menu) {
-        return false;
+        return super.onPreparePanel(featureId, view, menu);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void pureOnProvideAssistContent(AssistContent outContent) {
-
+        super.onProvideAssistContent(outContent);
     }
 
     @Override
     public void pureOnProvideAssistData(Bundle data) {
-
+        super.onProvideAssistData(data);
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void pureOnProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data, Menu menu, int deviceId) {
-
+        super.onProvideKeyboardShortcuts(data, menu, deviceId);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public Uri pureOnProvideReferrer() {
-        return null;
+        return super.onProvideReferrer();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void pureOnRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) throws IllegalArgumentException {
-
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
     public void pureOnRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
-
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
     }
 
     @Override
     public Object pureOnRetainNonConfigurationInstance() {
-        return null;
+        return super.onRetainNonConfigurationInstance();
     }
 
     @Override
     public void pureOnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-
+        // TODO
     }
 
     @Override

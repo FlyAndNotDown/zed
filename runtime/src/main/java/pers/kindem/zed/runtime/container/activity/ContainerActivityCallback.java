@@ -28,6 +28,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.media.session.MediaController;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -52,7 +53,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
-import android.widget.MediaController;
 import android.widget.Toolbar;
 
 import java.util.List;
@@ -72,7 +72,7 @@ public interface ContainerActivityCallback {
     boolean pureDispatchTouchEvent(MotionEvent ev);
     boolean pureDispatchTrackballEvent(MotionEvent ev);
     boolean pureEnterPictureInPictureMode(PictureInPictureParams params);
-    boolean pureEnterPictureInPictureMode();
+    void pureEnterPictureInPictureMode();
     <T extends View> T pureFindViewById(int id);
     void pureFinish();
     void pureFinishActivity(int requestCode);
