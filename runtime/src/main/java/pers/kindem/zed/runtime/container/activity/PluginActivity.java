@@ -7,9 +7,7 @@ import android.view.View;
 
 import pers.kindem.zed.runtime.container.context.PluginContextThemeWrapper;
 
-public class PluginActivity extends PluginContextThemeWrapper implements PluginActivityDefined {
-    private ContainerActivityCallback containerActivityCallback;
-
+public class PluginActivity extends BasePluginActivity implements PluginActivityDefined {
     public PluginActivity() {
         super(null);
     }
@@ -20,25 +18,5 @@ public class PluginActivity extends PluginContextThemeWrapper implements PluginA
 
     public void setContainerActivityCallback(ContainerActivityCallback containerActivityCallback) {
         this.containerActivityCallback = containerActivityCallback;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        containerActivityCallback.pureOnCreate(savedInstanceState);
-    }
-
-    @Override
-    public void setContentView(View view) {
-        containerActivityCallback.pureSetContentView(view);
-    }
-
-    @Override
-    public void setContentView(int id) {
-        containerActivityCallback.pureSetContentView(id);
-    }
-
-    @Override
-    public LayoutInflater getLayoutInflater() {
-        return (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
     }
 }

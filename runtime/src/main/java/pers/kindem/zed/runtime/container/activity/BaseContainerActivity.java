@@ -15,11 +15,13 @@ import android.app.SharedElementCallback;
 import android.app.TaskStackBuilder;
 import android.app.VoiceInteractor;
 import android.app.assist.AssistContent;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -57,7 +59,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class BaseContainerActivity extends Activity implements ContainerActivityCallback {
-    // TODO impl them
+    protected PluginActivity pluginActivity;
 
     @Override
     public void pureAddContentView(View view, ViewGroup.LayoutParams params) {
@@ -80,7 +82,7 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     }
 
     @Override
-    public void pureDismissDialog(int id) {
+    public void pureDismissDialog(int id) throws IllegalArgumentException {
 
     }
 
@@ -690,7 +692,7 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     }
 
     @Override
-    public void pureOnRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void pureOnRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) throws IllegalArgumentException {
 
     }
 
@@ -1035,7 +1037,7 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     }
 
     @Override
-    public void pureSetVrModeEnabled(boolean enabled, ComponentName requestedComponent) {
+    public void pureSetVrModeEnabled(boolean enabled, ComponentName requestedComponent) throws PackageManager.NameNotFoundException {
 
     }
 
@@ -1080,52 +1082,52 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     }
 
     @Override
-    public void pureStartActivities(Intent[] intents, Bundle options) {
+    public void pureStartActivities(Intent[] intents, Bundle options) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivities(Intent[] intents) {
+    public void pureStartActivities(Intent[] intents) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivity(Intent intent) {
+    public void pureStartActivity(Intent intent) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivity(Intent intent, Bundle options) {
+    public void pureStartActivity(Intent intent, Bundle options) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityForResult(Intent intent, int requestCode) {
+    public void pureStartActivityForResult(Intent intent, int requestCode) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityForResult(Intent intent, int requestCode, Bundle options) {
+    public void pureStartActivityForResult(Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode) {
+    public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode, Bundle options) {
+    public void pureStartActivityFromChild(Activity child, Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode, Bundle options) {
+    public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode, Bundle options) throws ActivityNotFoundException {
 
     }
 
     @Override
-    public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode) {
+    public void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode) throws ActivityNotFoundException {
 
     }
 
@@ -1140,32 +1142,32 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     }
 
     @Override
-    public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) {
+    public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
 
     }
 
     @Override
-    public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) {
+    public void pureStartIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
 
     }
 
     @Override
-    public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) {
+    public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
 
     }
 
     @Override
-    public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) {
+    public void pureStartIntentSenderForResult(IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
 
     }
 
     @Override
-    public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) {
+    public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
 
     }
 
     @Override
-    public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) {
+    public void pureStartIntentSenderFromChild(Activity child, IntentSender intent, int requestCode, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
 
     }
 

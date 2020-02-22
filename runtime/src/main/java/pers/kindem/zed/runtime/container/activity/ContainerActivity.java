@@ -17,7 +17,6 @@ import pers.kindem.zed.runtime.utils.Constant;
 
 public class ContainerActivity extends BaseContainerActivity {
     private boolean beforeOnCreate = true;
-    private PluginActivity pluginActivity;
 
     public ContainerActivity() {}
 

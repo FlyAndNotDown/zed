@@ -15,11 +15,13 @@ import android.app.SharedElementCallback;
 import android.app.TaskStackBuilder;
 import android.app.VoiceInteractor;
 import android.app.assist.AssistContent;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -61,7 +63,7 @@ public interface ContainerActivityCallback {
     void pureCloseContextMenu();
     void pureCloseOptionsMenu();
     PendingIntent pureCreatePendingResult(int requestCode, Intent data, int flags);
-    void pureDismissDialog(int id);
+    void pureDismissDialog(int id) throws IllegalArgumentException;
     void pureDismissKeyboardShortcutsHelper();
     boolean pureDispatchGenericMotionEvent(MotionEvent ev);
     boolean pureDispatchKeyEvent(KeyEvent event);
@@ -200,7 +202,11 @@ public interface ContainerActivityCallback {
     void pureOnProvideAssistData(Bundle data);
     void pureOnProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data, Menu menu, int deviceId);
     Uri pureOnProvideReferrer();
-    void pureOnRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults);
+    void pureOnRequestPermissionsResult(
+        int requestCode,
+        String[] permissions,
+        int[] grantResults
+    ) throws IllegalArgumentException;
     void pureOnRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState);
     Object pureOnRetainNonConfigurationInstance();
     void pureOnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState);
@@ -269,7 +275,10 @@ public interface ContainerActivityCallback {
     void pureSetTurnScreenOn(boolean turnScreenOn);
     void pureSetVisible(boolean visible);
     void pureSetVolumeControlStream(int streamType);
-    void pureSetVrModeEnabled(boolean enabled, ComponentName requestedComponent);
+    void pureSetVrModeEnabled(
+        boolean enabled,
+        ComponentName requestedComponent
+    ) throws PackageManager.NameNotFoundException;
     boolean pureShouldShowRequestPermissionRationale(String permission);
     boolean pureShouldUpRecreateTask(Intent targetIntent);
     boolean pureShowAssist(Bundle args);
@@ -278,26 +287,41 @@ public interface ContainerActivityCallback {
     void pureShowLockTaskEscapeMessage();
     ActionMode pureStartActionMode(ActionMode.Callback callback, int type);
     ActionMode pureStartActionMode(ActionMode.Callback callback);
-    void pureStartActivities(Intent[] intents, Bundle options);
-    void pureStartActivities(Intent[] intents);
-    void pureStartActivity(Intent intent);
-    void pureStartActivity(Intent intent, Bundle options);
-    void pureStartActivityForResult(Intent intent, int requestCode);
-    void pureStartActivityForResult(Intent intent, int requestCode, Bundle options);
-    void pureStartActivityFromChild(Activity child, Intent intent, int requestCode);
+    void pureStartActivities(Intent[] intents, Bundle options) throws ActivityNotFoundException;
+    void pureStartActivities(Intent[] intents) throws ActivityNotFoundException;
+    void pureStartActivity(Intent intent) throws ActivityNotFoundException;
+    void pureStartActivity(Intent intent, Bundle options) throws ActivityNotFoundException;
+    void pureStartActivityForResult(
+        Intent intent,
+        int requestCode
+    ) throws ActivityNotFoundException;
+    void pureStartActivityForResult(
+        Intent intent,
+        int requestCode,
+        Bundle options
+    ) throws ActivityNotFoundException;
+    void pureStartActivityFromChild(
+        Activity child,
+        Intent intent,
+        int requestCode
+    ) throws ActivityNotFoundException;
     void pureStartActivityFromChild(
         Activity child,
         Intent intent,
         int requestCode,
         Bundle options
-    );
+    ) throws ActivityNotFoundException;
     void pureStartActivityFromFragment(
         Fragment fragment,
         Intent intent,
         int requestCode,
         Bundle options
-    );
-    void pureStartActivityFromFragment(Fragment fragment, Intent intent, int requestCode);
+    ) throws ActivityNotFoundException;
+    void pureStartActivityFromFragment(
+        Fragment fragment,
+        Intent intent,
+        int requestCode
+    ) throws ActivityNotFoundException;
     boolean pureStartActivityIfNeeded(Intent intent, int requestCode, Bundle options);
     boolean pureStartActivityIfNeeded(Intent intent, int requestCode);
     void pureStartIntentSender(
@@ -306,7 +330,7 @@ public interface ContainerActivityCallback {
         int flagsMask,
         int flagsValues,
         int extraFlags
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartIntentSender(
         IntentSender intent,
         Intent fillInIntent,
@@ -314,7 +338,7 @@ public interface ContainerActivityCallback {
         int flagsValues,
         int extraFlags,
         Bundle options
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartIntentSenderForResult(
         IntentSender intent,
         int requestCode,
@@ -322,7 +346,7 @@ public interface ContainerActivityCallback {
         int flagsMask,
         int flagsValues,
         int extraFlags
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartIntentSenderForResult(
         IntentSender intent,
         int requestCode,
@@ -331,7 +355,7 @@ public interface ContainerActivityCallback {
         int flagsValues,
         int extraFlags,
         Bundle options
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartIntentSenderFromChild(
         Activity child,
         IntentSender intent,
@@ -341,7 +365,7 @@ public interface ContainerActivityCallback {
         int flagsValues,
         int extraFlags,
         Bundle options
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartIntentSenderFromChild(
         Activity child,
         IntentSender intent,
@@ -350,7 +374,7 @@ public interface ContainerActivityCallback {
         int flagsMask,
         int flagsValues,
         int extraFlags
-    );
+    ) throws IntentSender.SendIntentException;
     void pureStartLocalVoiceInteraction(Bundle privateOptions);
     void pureStartLockTask();
     void pureStartManagingCursor(Cursor c);
