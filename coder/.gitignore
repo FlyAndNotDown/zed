@@ -1,0 +1,12 @@
+# builds
+/dist
+
+# node.js modules
+/node_modules
+
+# yarn
+/yarn.lock
+/yarn-error.log
+
+# jetbrain
+/.idea
