@@ -83,7 +83,7 @@ public class BasePluginActivity extends PluginContextThemeWrapper implements Plu
 
     @Override
     public void closeOptionsMenu() {
-        containerActivityCallback.pureCloseContextMenu();
+        containerActivityCallback.pureCloseOptionsMenu();
     }
 
     @Override
@@ -299,6 +299,11 @@ public class BasePluginActivity extends PluginContextThemeWrapper implements Plu
     @Override
     public SearchEvent getSearchEvent() {
         return containerActivityCallback.pureGetSearchEvent();
+    }
+
+    @Override
+    public Object getSystemService(String name) {
+        return containerActivityCallback.pureGetSystemService(name);
     }
 
     @Override
@@ -1129,6 +1134,16 @@ public class BasePluginActivity extends PluginContextThemeWrapper implements Plu
     @Override
     public boolean startActivityIfNeeded(Intent intent, int requestCode) {
         return containerActivityCallback.pureStartActivityIfNeeded(intent, requestCode);
+    }
+
+    @Override
+    public void startIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags) throws IntentSender.SendIntentException {
+        containerActivityCallback.pureStartIntentSender(intent, fillInIntent, flagsMask, flagsValues, extraFlags);
+    }
+
+    @Override
+    public void startIntentSender(IntentSender intent, Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) throws IntentSender.SendIntentException {
+        containerActivityCallback.pureStartIntentSender(intent, fillInIntent, flagsMask, flagsValues, extraFlags, options);
     }
 
     @Override
