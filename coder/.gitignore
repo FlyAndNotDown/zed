@@ -10,3 +10,6 @@
 
 # jetbrain
 /.idea
+
+# middlewares
+/middleware
