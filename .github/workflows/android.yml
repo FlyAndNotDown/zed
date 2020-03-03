@@ -14,7 +14,7 @@ jobs:
     - name: Build with Gradle
       run: |
         cd ./transform
-        ./gradlew build
+        ./gradlew publish
 
   build-zed:
     runs-on: ubuntu-latest
