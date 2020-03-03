@@ -64,6 +64,879 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
     protected PluginActivity pluginActivity;
 
     @Override
+    public boolean dispatchGenericMotionEvent(MotionEvent ev) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchGenericMotionEvent(ev);
+        } else {
+            return super.dispatchGenericMotionEvent(ev);
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchKeyEvent(event);
+        } else {
+            return super.dispatchKeyEvent(event);
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyShortcutEvent(KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchKeyShortcutEvent(event);
+        } else {
+            return super.dispatchKeyShortcutEvent(event);
+        }
+    }
+
+    @Override
+    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchPopulateAccessibilityEvent(event);
+        } else {
+            return super.dispatchPopulateAccessibilityEvent(event);
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchTouchEvent(ev);
+        } else {
+            return super.dispatchTouchEvent(ev);
+        }
+    }
+
+    @Override
+    public boolean dispatchTrackballEvent(MotionEvent ev) {
+        if (pluginActivity != null) {
+            return pluginActivity.dispatchTrackballEvent(ev);
+        } else {
+            return super.dispatchTrackballEvent(ev);
+        }
+    }
+
+    @Override
+    public void onActionModeFinished(ActionMode mode) {
+        if (pluginActivity != null) {
+            pluginActivity.onActionModeFinished(mode);
+        } else {
+            super.onActionModeFinished(mode);
+        }
+    }
+
+    @Override
+    public void onActionModeStarted(ActionMode mode) {
+        if (pluginActivity != null) {
+            pluginActivity.onActionModeStarted(mode);
+        } else {
+            super.onActionModeStarted(mode);
+        }
+    }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        if (pluginActivity != null) {
+            pluginActivity.onActivityReenter(resultCode, data);
+        } else {
+            super.onActivityReenter(resultCode, data);
+        }
+    }
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if (pluginActivity != null) {
+            pluginActivity.onAttachFragment(fragment);
+        } else {
+            super.onAttachFragment(fragment);
+        }
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        if (pluginActivity != null) {
+            pluginActivity.onAttachedToWindow();
+        } else {
+            super.onAttachedToWindow();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (pluginActivity != null) {
+            pluginActivity.onBackPressed();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (pluginActivity != null) {
+            pluginActivity.onConfigurationChanged(newConfig);
+        } else {
+            super.onConfigurationChanged(newConfig);
+        }
+    }
+
+    @Override
+    public void onContentChanged() {
+        if (pluginActivity != null) {
+            pluginActivity.onContentChanged();
+        } else {
+            super.onContentChanged();
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (pluginActivity != null) {
+            return pluginActivity.onContextItemSelected(item);
+        } else {
+            return super.onContextItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onContextMenuClosed(Menu menu) {
+        if (pluginActivity != null) {
+            pluginActivity.onContextMenuClosed(menu);
+        } else {
+            super.onContextMenuClosed(menu);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        if (pluginActivity != null) {
+            pluginActivity.onCreate(savedInstanceState);
+        } else {
+            super.onCreate(savedInstanceState);
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        if (pluginActivity != null) {
+            pluginActivity.onCreate(savedInstanceState, persistentState);
+        } else {
+            super.onCreate(savedInstanceState, persistentState);
+        }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        if (pluginActivity != null) {
+            pluginActivity.onCreateContextMenu(menu, v, menuInfo);
+        } else {
+            super.onCreateContextMenu(menu, v, menuInfo);
+        }
+    }
+
+    @Override
+    public CharSequence onCreateDescription() {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateDescription();
+        } else {
+            return super.onCreateDescription();
+        }
+    }
+
+    @Override
+    public void onCreateNavigateUpTaskStack(TaskStackBuilder builder) {
+        if (pluginActivity != null) {
+            pluginActivity.onCreateNavigateUpTaskStack(builder);
+        } else {
+            super.onCreateNavigateUpTaskStack(builder);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateOptionsMenu(menu);
+        } else {
+            return super.onCreateOptionsMenu(menu);
+        }
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreatePanelMenu(featureId, menu);
+        } else {
+            return super.onCreatePanelMenu(featureId, menu);
+        }
+    }
+
+    @Override
+    public View onCreatePanelView(int featureId) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreatePanelView(featureId);
+        } else {
+            return super.onCreatePanelView(featureId);
+        }
+    }
+
+    @Override
+    public boolean onCreateThumbnail(Bitmap outBitmap, Canvas canvas) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateThumbnail(outBitmap, canvas);
+        } else {
+            return super.onCreateThumbnail(outBitmap, canvas);
+        }
+    }
+
+    @Override
+    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateView(parent, name, context, attrs);
+        } else {
+            return super.onCreateView(parent, name, context, attrs);
+        }
+    }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateView(name, context, attrs);
+        } else {
+            return super.onCreateView(name, context, attrs);
+        }
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        if (pluginActivity != null) {
+            pluginActivity.onDetachedFromWindow();
+        } else {
+            super.onDetachedFromWindow();
+        }
+    }
+
+    @Override
+    public void onEnterAnimationComplete() {
+        if (pluginActivity != null) {
+            pluginActivity.onEnterAnimationComplete();
+        } else {
+            super.onEnterAnimationComplete();
+        }
+    }
+
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onGenericMotionEvent(event);
+        } else {
+            return super.onGenericMotionEvent(event);
+        }
+    }
+
+    @Override
+    public void onGetDirectActions(CancellationSignal cancellationSignal, Consumer<List<DirectAction>> callback) {
+        if (pluginActivity != null) {
+            pluginActivity.onGetDirectActions(cancellationSignal, callback);
+        } else {
+            super.onGetDirectActions(cancellationSignal, callback);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onKeyDown(keyCode, event);
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onKeyLongPress(keyCode, event);
+        } else {
+            return super.onKeyLongPress(keyCode, event);
+        }
+    }
+
+    @Override
+    public boolean onKeyMultiple(int keyCode, int repeatCount, KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onKeyMultiple(keyCode, repeatCount, event);
+        } else {
+            return super.onKeyMultiple(keyCode, repeatCount, event);
+        }
+    }
+
+    @Override
+    public boolean onKeyShortcut(int keyCode, KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onKeyShortcut(keyCode, event);
+        } else {
+            return super.onKeyShortcut(keyCode, event);
+        }
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onKeyUp(keyCode, event);
+        } else {
+            return super.onKeyUp(keyCode, event);
+        }
+    }
+
+    @Override
+    public void onLocalVoiceInteractionStarted() {
+        if (pluginActivity != null) {
+            pluginActivity.onLocalVoiceInteractionStarted();
+        } else {
+            super.onLocalVoiceInteractionStarted();
+        }
+    }
+
+    @Override
+    public void onLocalVoiceInteractionStopped() {
+        if (pluginActivity != null) {
+            pluginActivity.onLocalVoiceInteractionStopped();
+        } else {
+            super.onLocalVoiceInteractionStopped();
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        if (pluginActivity != null) {
+            pluginActivity.onLowMemory();
+        } else {
+            super.onLowMemory();
+        }
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        if (pluginActivity != null) {
+            return pluginActivity.onMenuItemSelected(featureId, item);
+        } else {
+            return super.onMenuItemSelected(featureId, item);
+        }
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        if (pluginActivity != null) {
+            return pluginActivity.onMenuOpened(featureId, menu);
+        } else {
+            return super.onMenuOpened(featureId, menu);
+        }
+    }
+
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
+        if (pluginActivity != null) {
+            pluginActivity.onMultiWindowModeChanged(isInMultiWindowMode);
+        } else {
+            super.onMultiWindowModeChanged(isInMultiWindowMode);
+        }
+    }
+
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode, Configuration newConfig) {
+        if (pluginActivity != null) {
+            pluginActivity.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
+        } else {
+            super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
+        }
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        if (pluginActivity != null) {
+            return pluginActivity.onNavigateUp();
+        } else {
+            return super.onNavigateUp();
+        }
+    }
+
+    @Override
+    public boolean onNavigateUpFromChild(Activity child) {
+        if (pluginActivity != null) {
+            return pluginActivity.onNavigateUpFromChild(child);
+        } else {
+            return super.onNavigateUpFromChild(child);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (pluginActivity != null) {
+            return pluginActivity.onOptionsItemSelected(item);
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onOptionsMenuClosed(Menu menu) {
+        if (pluginActivity != null) {
+            pluginActivity.onOptionsMenuClosed(menu);
+        } else {
+            super.onOptionsMenuClosed(menu);
+        }
+    }
+
+    @Override
+    public void onPanelClosed(int featureId, Menu menu) {
+        if (pluginActivity != null) {
+            pluginActivity.onPanelClosed(featureId, menu);
+        } else {
+            super.onPanelClosed(featureId, menu);
+        }
+    }
+
+    @Override
+    public void onPerformDirectAction(String actionId, Bundle arguments, CancellationSignal cancellationSignal, Consumer<Bundle> resultListener) {
+        if (pluginActivity != null) {
+            pluginActivity.onPerformDirectAction(actionId, arguments, cancellationSignal, resultListener);
+        } else {
+            super.onPerformDirectAction(actionId, arguments, cancellationSignal, resultListener);
+        }
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
+        if (pluginActivity != null) {
+            pluginActivity.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+        } else {
+            super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+        }
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+        if (pluginActivity != null) {
+            pluginActivity.onPictureInPictureModeChanged(isInPictureInPictureMode);
+        } else {
+            super.onPictureInPictureModeChanged(isInPictureInPictureMode);
+        }
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        if (pluginActivity != null) {
+            pluginActivity.onPostCreate(savedInstanceState);
+        } else {
+            super.onPostCreate(savedInstanceState);
+        }
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        if (pluginActivity != null) {
+            pluginActivity.onPostCreate(savedInstanceState, persistentState);
+        } else {
+            super.onPostCreate(savedInstanceState, persistentState);
+        }
+    }
+
+    @Override
+    public void onPrepareNavigateUpTaskStack(TaskStackBuilder builder) {
+        if (pluginActivity != null) {
+            pluginActivity.onPrepareNavigateUpTaskStack(builder);
+        } else {
+            super.onPrepareNavigateUpTaskStack(builder);
+        }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (pluginActivity != null) {
+            return pluginActivity.onPrepareOptionsMenu(menu);
+        } else {
+            return super.onPrepareOptionsMenu(menu);
+        }
+    }
+
+    @Override
+    public boolean onPreparePanel(int featureId, View view, Menu menu) {
+        if (pluginActivity != null) {
+            return pluginActivity.onPreparePanel(featureId, view, menu);
+        } else {
+            return super.onPreparePanel(featureId, view, menu);
+        }
+    }
+
+    @Override
+    public void onProvideAssistContent(AssistContent outContent) {
+        if (pluginActivity != null) {
+            pluginActivity.onProvideAssistContent(outContent);
+        } else {
+            super.onProvideAssistContent(outContent);
+        }
+    }
+
+    @Override
+    public void onProvideAssistData(Bundle data) {
+        if (pluginActivity != null) {
+            pluginActivity.onProvideAssistData(data);
+        } else {
+            super.onProvideAssistData(data);
+        }
+    }
+
+    @Override
+    public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data, Menu menu, int deviceId) {
+        if (pluginActivity != null) {
+            pluginActivity.onProvideKeyboardShortcuts(data, menu, deviceId);
+        } else {
+            super.onProvideKeyboardShortcuts(data, menu, deviceId);
+        }
+    }
+
+    @Override
+    public Uri onProvideReferrer() {
+        if (pluginActivity != null) {
+            return pluginActivity.onProvideReferrer();
+        } else {
+            return super.onProvideReferrer();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (pluginActivity != null) {
+            pluginActivity.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (pluginActivity != null) {
+            pluginActivity.onRestoreInstanceState(savedInstanceState);
+        } else {
+            super.onRestoreInstanceState(savedInstanceState);
+        }
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        if (pluginActivity != null) {
+            pluginActivity.onRestoreInstanceState(savedInstanceState, persistentState);
+        } else {
+            super.onRestoreInstanceState(savedInstanceState, persistentState);
+        }
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        if (pluginActivity != null) {
+            return pluginActivity.onRetainNonConfigurationInstance();
+        } else {
+            return super.onRetainNonConfigurationInstance();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (pluginActivity != null) {
+            pluginActivity.onSaveInstanceState(outState);
+        } else {
+            super.onSaveInstanceState(outState);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        if (pluginActivity != null) {
+            pluginActivity.onSaveInstanceState(outState, outPersistentState);
+        } else {
+            super.onSaveInstanceState(outState, outPersistentState);
+        }
+    }
+
+    @Override
+    public boolean onSearchRequested() {
+        if (pluginActivity != null) {
+            return pluginActivity.onSearchRequested();
+        } else {
+            return super.onSearchRequested();
+        }
+    }
+
+    @Override
+    public boolean onSearchRequested(SearchEvent searchEvent) {
+        if (pluginActivity != null) {
+            return pluginActivity.onSearchRequested(searchEvent);
+        } else {
+            return super.onSearchRequested(searchEvent);
+        }
+    }
+
+    @Override
+    public void onStateNotSaved() {
+        if (pluginActivity != null) {
+            pluginActivity.onStateNotSaved();
+        } else {
+            super.onStateNotSaved();
+        }
+    }
+
+    @Override
+    public void onTopResumedActivityChanged(boolean isTopResumedActivity) {
+        if (pluginActivity != null) {
+            pluginActivity.onTopResumedActivityChanged(isTopResumedActivity);
+        } else {
+            super.onTopResumedActivityChanged(isTopResumedActivity);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onTouchEvent(event);
+        } else {
+            return super.onTouchEvent(event);
+        }
+    }
+
+    @Override
+    public boolean onTrackballEvent(MotionEvent event) {
+        if (pluginActivity != null) {
+            return pluginActivity.onTrackballEvent(event);
+        } else {
+            return super.onTrackballEvent(event);
+        }
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        if (pluginActivity != null) {
+            pluginActivity.onTrimMemory(level);
+        } else {
+            super.onTrimMemory(level);
+        }
+    }
+
+    @Override
+    public void onUserInteraction() {
+        if (pluginActivity != null) {
+            pluginActivity.onUserInteraction();
+        } else {
+            super.onUserInteraction();
+        }
+    }
+
+    @Override
+    public void onVisibleBehindCanceled() {
+        if (pluginActivity != null) {
+            pluginActivity.onVisibleBehindCanceled();
+        } else {
+            super.onVisibleBehindCanceled();
+        }
+    }
+
+    @Override
+    public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
+        if (pluginActivity != null) {
+            pluginActivity.onWindowAttributesChanged(params);
+        } else {
+            super.onWindowAttributesChanged(params);
+        }
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (pluginActivity != null) {
+            pluginActivity.onWindowFocusChanged(hasFocus);
+        } else {
+            super.onWindowFocusChanged(hasFocus);
+        }
+    }
+
+    @Override
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
+        if (pluginActivity != null) {
+            return pluginActivity.onWindowStartingActionMode(callback);
+        } else {
+            return super.onWindowStartingActionMode(callback);
+        }
+    }
+
+    @Override
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int type) {
+        if (pluginActivity != null) {
+            return pluginActivity.onWindowStartingActionMode(callback, type);
+        } else {
+            return super.onWindowStartingActionMode(callback, type);
+        }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        if (pluginActivity != null) {
+            pluginActivity.attachBaseContext(newBase);
+        } else {
+            super.attachBaseContext(newBase);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (pluginActivity != null) {
+            pluginActivity.onActivityResult(requestCode, resultCode, data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
+        if (pluginActivity != null) {
+            pluginActivity.onApplyThemeResource(theme, resid, first);
+        } else {
+            super.onApplyThemeResource(theme, resid, first);
+        }
+    }
+
+    @Override
+    protected void onChildTitleChanged(Activity childActivity, CharSequence title) {
+        if (pluginActivity != null) {
+            pluginActivity.onChildTitleChanged(childActivity, title);
+        } else {
+            super.onChildTitleChanged(childActivity, title);
+        }
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateDialog(id);
+        } else {
+            return super.onCreateDialog(id);
+        }
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id, Bundle args) {
+        if (pluginActivity != null) {
+            return pluginActivity.onCreateDialog(id, args);
+        } else {
+            return super.onCreateDialog(id, args);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (pluginActivity != null) {
+            pluginActivity.onDestroy();
+        } else {
+            super.onDestroy();
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (pluginActivity != null) {
+            pluginActivity.onNewIntent(intent);
+        } else {
+            super.onNewIntent(intent);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (pluginActivity != null) {
+            pluginActivity.onPause();
+        } else {
+            super.onPause();
+        }
+    }
+
+    @Override
+    protected void onPostResume() {
+        if (pluginActivity != null) {
+            pluginActivity.onPostResume();
+        } else {
+            super.onPostResume();
+        }
+    }
+
+    @Override
+    protected void onPrepareDialog(int id, Dialog dialog) {
+        if (pluginActivity != null) {
+            pluginActivity.onPrepareDialog(id, dialog);
+        } else {
+            super.onPrepareDialog(id, dialog);
+        }
+    }
+
+    @Override
+    protected void onPrepareDialog(int id, Dialog dialog, Bundle args) {
+        if (pluginActivity != null) {
+            pluginActivity.onPrepareDialog(id, dialog, args);
+        } else {
+            super.onPrepareDialog(id, dialog, args);
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        if (pluginActivity != null) {
+            pluginActivity.onRestart();
+        } else {
+            super.onRestart();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        if (pluginActivity != null) {
+            pluginActivity.onResume();
+        } else {
+            super.onResume();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        if (pluginActivity != null) {
+            pluginActivity.onStart();
+        } else {
+            super.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        if (pluginActivity != null) {
+            pluginActivity.onStop();
+        } else {
+            super.onStop();
+        }
+    }
+
+    @Override
+    protected void onTitleChanged(CharSequence title, int color) {
+        if (pluginActivity != null) {
+            pluginActivity.onTitleChanged(title, color);
+        } else {
+            super.onTitleChanged(title, color);
+        }
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        if (pluginActivity != null) {
+            pluginActivity.onUserLeaveHint();
+        } else {
+            super.onUserLeaveHint();
+        }
+    }
+
+    @Override
     public void pureAddContentView(View view, ViewGroup.LayoutParams params) {
         super.addContentView(view, params);
     }
@@ -885,6 +1758,7 @@ public class BaseContainerActivity extends Activity implements ContainerActivity
         return super.requestWindowFeature(featureId);
     }
 
+    @TargetApi(Build.VERSION_CODES.P)
     @Override
     public <T extends View> T pureRequireViewById(int id) {
         return super.requireViewById(id);
