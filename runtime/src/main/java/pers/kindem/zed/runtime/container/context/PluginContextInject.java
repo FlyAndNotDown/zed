@@ -2,7 +2,7 @@ package pers.kindem.zed.runtime.container.context;
 
 import android.content.Context;
 
-import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
+import pers.kindem.zed.runtime.container.application.PluginApplication;
 import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
 import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 

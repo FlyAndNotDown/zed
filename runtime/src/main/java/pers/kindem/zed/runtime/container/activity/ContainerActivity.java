@@ -1,6 +1,5 @@
 package pers.kindem.zed.runtime.container.activity;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import pers.kindem.zed.runtime.bean.PluginInfo;
 import pers.kindem.zed.runtime.bean.PluginLoadInfo;
 import pers.kindem.zed.runtime.core.Installer;
 import pers.kindem.zed.runtime.loader.PluginLoader;
-import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
+import pers.kindem.zed.runtime.container.application.PluginApplication;
 import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
 import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 import pers.kindem.zed.runtime.utils.Constant;

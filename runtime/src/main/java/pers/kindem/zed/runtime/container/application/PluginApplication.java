@@ -1,4 +1,4 @@
-package pers.kindem.zed.runtime.loader.proxy;
+package pers.kindem.zed.runtime.container.application;
 
 import android.content.Context;
 

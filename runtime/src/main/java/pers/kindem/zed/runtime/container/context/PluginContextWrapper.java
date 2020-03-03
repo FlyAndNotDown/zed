@@ -5,7 +5,7 @@ import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 
-import pers.kindem.zed.runtime.loader.proxy.PluginApplication;
+import pers.kindem.zed.runtime.container.application.PluginApplication;
 import pers.kindem.zed.runtime.loader.proxy.PluginClassLoader;
 import pers.kindem.zed.runtime.loader.proxy.PluginResources;
 
