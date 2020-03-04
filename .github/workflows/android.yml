@@ -16,6 +16,6 @@ jobs:
     - name: Build with Gradle
       run: |
         cd ./transform
-        ./gradlew build
+        ./gradlew publish
         cd ..
         ./gradlew build
