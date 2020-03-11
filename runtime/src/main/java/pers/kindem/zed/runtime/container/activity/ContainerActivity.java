@@ -19,7 +19,7 @@ public class ContainerActivity extends BaseContainerActivity {
 
     public ContainerActivity() {}
 
-    public PluginLoadInfo resolvePluginInfo(Bundle bundle) {
+    private PluginLoadInfo resolvePluginInfo(Bundle bundle) {
         if (bundle == null) {
             return null;
         }
@@ -31,7 +31,7 @@ public class ContainerActivity extends BaseContainerActivity {
         return new PluginLoadInfo(name, component);
     }
 
-    public boolean loadPlugin(PluginLoadInfo pluginLoadInfo) {
+    private boolean loadPlugin(PluginLoadInfo pluginLoadInfo) {
         if (pluginLoadInfo == null) {
             return false;
         }
@@ -130,20 +130,5 @@ public class ContainerActivity extends BaseContainerActivity {
             return pureGetLayoutInflater();
         }
         return pluginActivity.getLayoutInflater();
-    }
-
-    @Override
-    public void pureOnCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void pureSetContentView(View view) {
-        super.setContentView(view);
-    }
-
-    @Override
-    public void pureSetContentView(int id) {
-        super.setContentView(id);
     }
 }
