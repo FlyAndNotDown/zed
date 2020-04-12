@@ -1,9 +1,8 @@
 package pers.kindem.zed.runtime.core.manager;
 
 import android.content.Context;
-import android.os.RemoteException;
 
-public class PluginActivityManagerService extends IPluginActivityManagerService.Stub {
+public class PluginActivityManagerService implements IPluginActivityManagerService {
     private static PluginActivityManagerService instance;
 
     public static PluginActivityManagerService getInstance(Context context) {
@@ -24,7 +23,7 @@ public class PluginActivityManagerService extends IPluginActivityManagerService.
     }
 
     @Override
-    public void initialize() throws RemoteException {
+    public void initialize() {
 
     }
 }
