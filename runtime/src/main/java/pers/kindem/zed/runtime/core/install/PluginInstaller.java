@@ -64,7 +64,7 @@ public class PluginInstaller implements IPluginInstaller {
             }
         }
         OutputStream outputStream = null;
-        String destFilePath = installDir.getPath() + File.separator + Constant.INSTALLED_PLUGIN_NAME;
+        String destFilePath = installDir.getPath() + File.separator + Constant.INSTALLED_PLUGIN_APK_NAME;
         try {
             outputStream = new FileOutputStream(destFilePath);
         } catch (IOException e) {

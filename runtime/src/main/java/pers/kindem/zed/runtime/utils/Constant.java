@@ -11,7 +11,7 @@ public class Constant {
 
     // file
     public static final String PLUGINS_INSTALL_DIR_NAME = "plugins";
-    public static final String INSTALLED_PLUGIN_NAME = "base.apk";
+    public static final String INSTALLED_PLUGIN_APK_NAME = "base.apk";
 
     // regex
     public static final String PLUGIN_APK_NAME_REGEX = "^[a-zA-Z][a-zA-Z0-9_]*__[0-9]+.apk$";
