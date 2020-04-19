@@ -12,6 +12,7 @@ import pers.kindem.zed.runtime.bean.PluginInfo;
 import pers.kindem.zed.runtime.utils.FileUtil;
 import pers.kindem.zed.runtime.utils.LogUtil;
 
+// TODO remove this class, replace it with PluginPackageManagerService
 public class Installer {
     private static final String TAG = Installer.class.getSimpleName();
 

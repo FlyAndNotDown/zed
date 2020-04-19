@@ -1,9 +1,11 @@
 package pers.kindem.zed.runtime.loader.proxy;
 
 import android.annotation.TargetApi;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Movie;
 import android.graphics.Typeface;
@@ -11,6 +13,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+
+import java.io.InputStream;
 
 public class PluginResources extends Resources {
     private static final String TAG = PluginResources.class.getSimpleName();
@@ -22,6 +26,42 @@ public class PluginResources extends Resources {
         super(injectResources.getAssets(), injectResources.getDisplayMetrics(), injectResources.getConfiguration());
         this.hostResources = hostResources;
         this.injectResources = injectResources;
+    }
+
+    @Override
+    public TypedArray obtainTypedArray(int id) throws NotFoundException {
+        try {
+            return injectResources.obtainTypedArray(id);
+        } catch (NotFoundException e) {
+            return hostResources.obtainTypedArray(id);
+        }
+    }
+
+    @Override
+    public InputStream openRawResource(int id) throws NotFoundException {
+        try {
+            return injectResources.openRawResource(id);
+        } catch (NotFoundException e) {
+            return hostResources.openRawResource(id);
+        }
+    }
+
+    @Override
+    public InputStream openRawResource(int id, TypedValue value) throws NotFoundException {
+        try {
+            return injectResources.openRawResource(id, value);
+        } catch (NotFoundException e) {
+            return hostResources.openRawResource(id, value);
+        }
+    }
+
+    @Override
+    public AssetFileDescriptor openRawResourceFd(int id) throws NotFoundException {
+        try {
+            return injectResources.openRawResourceFd(id);
+        } catch (NotFoundException e) {
+            return hostResources.openRawResourceFd(id);
+        }
     }
 
     @Override

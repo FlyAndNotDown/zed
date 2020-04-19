@@ -22,7 +22,12 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
 
     public PluginContextWrapper(Context base) {
         super(base);
-        baseContext = base;
+        setBaseContext(base);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        setBaseContext(base);
     }
 
     @Override
@@ -41,8 +46,8 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
     }
 
     @Override
-    public void setBaseContext(Context baseContext) {
-        this.baseContext = baseContext;
+    public void setBaseContext(Context context) {
+        this.baseContext = context;
     }
 
     @Override
@@ -68,6 +73,6 @@ public class PluginContextWrapper extends ContextWrapper implements PluginContex
             }
             return layoutInflater;
         }
-        return null;
+        return super.getSystemService(name);
     }
 }
