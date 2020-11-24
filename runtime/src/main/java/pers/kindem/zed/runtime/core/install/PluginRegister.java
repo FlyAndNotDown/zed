@@ -65,6 +65,15 @@ public class PluginRegister implements IPluginRegister {
         }
     }
 
+    @Override
+    public PluginInfo getPluginInfo(String pluginName) {
+        PluginInfo pluginInfo = pluginInfoMap.get(pluginName);
+        if (pluginInfo != null) {
+            return pluginInfo;
+        }
+        return new PluginInfo();
+    }
+
     private PluginInfo readPluginInfoFromInstalledPlugin(String pluginsInstallPath, String installedDirName) {
         String[] tokens = installedDirName.split("__");
         if (tokens.length != 2) {
